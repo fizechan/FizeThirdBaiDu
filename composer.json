@@ -1,0 +1,22 @@
+{
+    "name": "fize/third/baidu",
+    "description": "百度各类接口实现",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "FizeChan",
+            "email": "chenfengzhan@qq.com"
+        }
+    ],
+    "require": {
+		"php": ">=5.4.0",
+        "ext-curl": "*",
+        "fize/net": "*@dev",
+        "fize/crypt": "*@dev"
+    },
+	"autoload": {
+        "psr-4": {
+            "fize\\third\\baidu\\": "src"
+        }
+    }
+}
