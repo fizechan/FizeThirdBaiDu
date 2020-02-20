@@ -4,15 +4,13 @@
 namespace fize\third\baidu\map\v1;
 
 
-use fize\third\baidu\map\Api;
+use fize\third\baidu\Map;
 
 
 /**
  * 百度地图LBS个性化编码API接口
- *
- * @author Fize
  */
-class Geocoder extends Api
+class Geocoder extends Map
 {
 
     /**
@@ -29,7 +27,7 @@ class Geocoder extends Api
     {
         $data = [
             'address' => $address,
-            'output' => $output
+            'output'  => $output
         ];
         if (!is_null($city)) {
             $data['city'] = $city;
@@ -56,7 +54,7 @@ class Geocoder extends Api
     public function cloudrgc($location, $geotable_id, $extensions = null, $coord_type = null, $timestamp = false)
     {
         $data = [
-            'location' => $location,
+            'location'    => $location,
             'geotable_id' => $geotable_id,
         ];
         if (!is_null($extensions)) {

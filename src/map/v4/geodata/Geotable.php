@@ -1,21 +1,16 @@
 <?php
-/*
- * 百度地图LBS云存储(V4)API接口
- */
-
 
 namespace fize\third\baidu\map\v4\geodata;
 
-
-use fize\third\baidu\map\Api;
+use fize\third\baidu\Map;
 
 
 /**
  * 数据表操作接口
  *
- * @author Fize
+ * 百度地图LBS云存储(V4)API接口
  */
-class Geotable extends Api
+class Geotable extends Map
 {
 
     /**
@@ -27,7 +22,7 @@ class Geotable extends Api
     public function create($name, $is_published = 1)
     {
         $data = [
-            'name' => $name,
+            'name'         => $name,
             'is_published' => $is_published,
         ];
         return $this->httpPost("/geodata/v4/geotable/create", $data, 'id');
@@ -38,7 +33,7 @@ class Geotable extends Api
      * @param string $name 查询表名左匹配字符串
      * @return array 成功返回表列表，错误时返回false
      */
-    public function lists($name = '')
+    public function list($name = '')
     {
         $data = ['name' => $name];
         return $this->httpGet("/geodata/v4/geotable/list", $data, ['size', 'geotables']);

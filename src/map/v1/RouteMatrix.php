@@ -1,14 +1,13 @@
 <?php
-/**
- * 批量算路
- */
 
 namespace fize\third\baidu\map\v1;
 
-use fize\third\baidu\map\Api;
-use Exception;
+use fize\third\baidu\Map;
 
-class RouteMatrix extends Api
+/**
+ * 批量算路
+ */
+class RouteMatrix extends Map
 {
     /**
      * 驾车
@@ -17,18 +16,17 @@ class RouteMatrix extends Api
      * @param string $coord_type 坐标类型
      * @param int $timestamp 时间戳
      * @return array 错误则返回false
-     * @throws Exception
      */
     public function driving($origins, $destinations, $coord_type = 'bd09ll', $timestamp = null)
     {
         $data = [
-            'origins' => $origins,
+            'origins'      => $origins,
             'destinations' => $destinations,
-            'mode' => 'driving',
-            'output' => 'json',
-            'coord_type' => $coord_type
+            'mode'         => 'driving',
+            'output'       => 'json',
+            'coord_type'   => $coord_type
         ];
-        if(is_null($timestamp)){
+        if (is_null($timestamp)) {
             $timestamp = time();
         }
         $data['timestamp'] = $timestamp;
@@ -42,18 +40,17 @@ class RouteMatrix extends Api
      * @param string $coord_type 坐标类型
      * @param int $timestamp 时间戳
      * @return array 错误则返回false
-     * @throws Exception
      */
     public function walking($origins, $destinations, $coord_type = 'bd09ll', $timestamp = null)
     {
         $data = [
-            'origins' => $origins,
+            'origins'      => $origins,
             'destinations' => $destinations,
-            'mode' => 'walking',
-            'output' => 'json',
-            'coord_type' => $coord_type
+            'mode'         => 'walking',
+            'output'       => 'json',
+            'coord_type'   => $coord_type
         ];
-        if(is_null($timestamp)){
+        if (is_null($timestamp)) {
             $timestamp = time();
         }
         $data['timestamp'] = $timestamp;

@@ -1,21 +1,17 @@
 <?php
-/*
- * 百度地图LBS云检索API接口
- */
-
 
 namespace fize\third\baidu\map\v3;
 
 
-use fize\third\baidu\map\Api;
+use fize\third\baidu\Map;
 
 
 /**
  * 批量操作任务查询接口
  *
- * @author Fize
+ * 百度地图LBS云检索API接口
  */
-class Geosearch extends Api
+class Geosearch extends Map
 {
 
     /**
@@ -37,7 +33,7 @@ class Geosearch extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'location' => $location,
+            'location'    => $location,
         ];
         if (!is_null($q)) {
             $data['q'] = $q;
@@ -87,8 +83,8 @@ class Geosearch extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'bounds' => $bounds,
-            'q' => $q,
+            'bounds'      => $bounds,
+            'q'           => $q,
         ];
         if (!is_null($coord_type)) {
             $data['coord_type'] = $coord_type;
@@ -132,7 +128,7 @@ class Geosearch extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'q' => $q,
+            'q'           => $q,
         ];
         if (!is_null($coord_type)) {
             $data['coord_type'] = $coord_type;

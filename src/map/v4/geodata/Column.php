@@ -1,20 +1,17 @@
 <?php
-/*
- * 百度地图LBS云存储(V4)API接口
- */
-
 
 namespace fize\third\baidu\map\v4\geodata;
 
 
-use fize\third\baidu\map\Api;
+use fize\third\baidu\Map;
 
 
 /**
  * 数据列操作接口
- * @author Fize
+ *
+ * 百度地图LBS云存储(V4)API接口
  */
-class Column extends Api
+class Column extends Map
 {
 
 
@@ -31,12 +28,12 @@ class Column extends Api
     public function create($geotable_id, $name, $key, $type, $is_search_field, $is_index_field)
     {
         $data = [
-            'geotable_id' => $geotable_id,
-            'name' => $name,
-            'key' => $key,
-            'type' => $type,
+            'geotable_id'     => $geotable_id,
+            'name'            => $name,
+            'key'             => $key,
+            'type'            => $type,
             'is_search_field' => $is_search_field,
-            'is_index_field' => $is_index_field
+            'is_index_field'  => $is_index_field
         ];
         return $this->httpPost("/geodata/v4/column/create", $data, 'id');
     }
@@ -48,12 +45,12 @@ class Column extends Api
      * @param string $key
      * @return array 成功返回表列表，错误时返回false
      */
-    public function lists($geotable_id, $name = '', $key = '')
+    public function list($geotable_id, $name = '', $key = '')
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'name' => $name,
-            'key' => $key
+            'name'        => $name,
+            'key'         => $key
         ];
         return $this->httpGet("/geodata/v4/column/list", $data, ['size', 'columns']);
     }
@@ -68,7 +65,7 @@ class Column extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'id' => $id
+            'id'          => $id
         ];
         return $this->httpGet("/geodata/v4/column/detail", $data, 'column');
     }
@@ -86,7 +83,7 @@ class Column extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'id' => $id
+            'id'          => $id
         ];
         if (!is_null($name)) { //进行属性中文名称修改
             $data['name'] = $name;
@@ -115,7 +112,7 @@ class Column extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'id' => $id
+            'id'          => $id
         ];
         $rst = $this->httpPost("/geodata/v4/column/delete", $data, 'status');
         if ($rst === 0) {

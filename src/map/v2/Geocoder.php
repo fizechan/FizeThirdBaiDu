@@ -1,15 +1,13 @@
 <?php
-/**
- * 地理编码服务
- */
 
 namespace fize\third\baidu\map\v2;
 
-use fize\third\baidu\map\Api;
-use Exception;
+use fize\third\baidu\Map;
 
-
-class Geocoder extends Api
+/**
+ * 地理编码服务
+ */
+class Geocoder extends Map
 {
     /**
      * 地理编码
@@ -17,14 +15,13 @@ class Geocoder extends Api
      * @param string $city 指定所在城市
      * @param string $ret_coordtype 指定坐标系
      * @return array 错误则返回false
-     * @throws Exception
      */
     public function encode($address, $city = null, $ret_coordtype = 'bd09ll')
     {
         $data = [
-            'address' => $address,
+            'address'       => $address,
             'ret_coordtype' => $ret_coordtype,
-            'output' => 'json'
+            'output'        => 'json'
         ];
         if (!is_null($city)) {
             $data['city'] = $city;
@@ -45,18 +42,17 @@ class Geocoder extends Api
      * @param bool $extensions_town 当取值为true时，行政区划返回乡镇级数据。默认不访问。
      * @param int $latest_admin 是否访问最新版行政区划数据，1（访问），0（不访问）
      * @return array 错误则返回false
-     * @throws Exception
      */
     public function decode($location, $coordtype = null, $ret_coordtype = null, $batch = false, $pois = 0, $radius = 1000, $extensions_poi = null, $extensions_road = false, $extensions_town = null, $latest_admin = 0)
     {
         $data = [
-            'location' => $location,
-            'batch' => $batch,
-            'pois' => $pois,
-            'radius' => $radius,
-            'output' => 'json',
+            'location'        => $location,
+            'batch'           => $batch,
+            'pois'            => $pois,
+            'radius'          => $radius,
+            'output'          => 'json',
             'extensions_road' => $extensions_road,
-            'latest_admin' => $latest_admin
+            'latest_admin'    => $latest_admin
         ];
         if (!is_null($coordtype)) {
             $data['coordtype'] = $coordtype;

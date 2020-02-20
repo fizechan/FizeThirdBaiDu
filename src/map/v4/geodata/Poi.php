@@ -1,20 +1,16 @@
 <?php
-/*
- * 百度地图LBS云存储(V4)API接口
- */
 
 namespace fize\third\baidu\map\v4\geodata;
 
-
-use fize\third\baidu\map\Api;
 use CURLFile;
+use fize\third\baidu\Map;
 
 /**
  * 位置数据操作接口
  *
- * @author Fize
+ * 百度地图LBS云存储(V4)API接口
  */
-class Poi extends Api
+class Poi extends Map
 {
 
     /**
@@ -33,13 +29,13 @@ class Poi extends Api
     public function create($geotable_id, $latitude, $longitude, $coord_type, $title = null, $address = null, $tags = null, array $column = [], $polygons = null)
     {
         $data = [
-            'title' => empty($title) ? '' : $title,
-            'address' => empty($address) ? '' : $address,
-            'tags' => empty($tags) ? '' : $tags,
-            'latitude' => $latitude,
-            'longitude' => $longitude,
-            'polygons' => empty($polygons) ? '' : $polygons,
-            'coord_type' => $coord_type,
+            'title'       => empty($title) ? '' : $title,
+            'address'     => empty($address) ? '' : $address,
+            'tags'        => empty($tags) ? '' : $tags,
+            'latitude'    => $latitude,
+            'longitude'   => $longitude,
+            'polygons'    => empty($polygons) ? '' : $polygons,
+            'coord_type'  => $coord_type,
             'geotable_id' => $geotable_id,
         ];
         if (!empty($column)) {
@@ -62,13 +58,13 @@ class Poi extends Api
      * @param array $column 自定义数组查询
      * @return array 返回结果，含size,total,pois，错误返回false
      */
-    public function lists($geotable_id, $coord_type, $page_index = 0, $page_size = 10, $title = null, $tags = null, $bounds = null, $start_date = null, $end_date = null, array $column = [])
+    public function list($geotable_id, $coord_type, $page_index = 0, $page_size = 10, $title = null, $tags = null, $bounds = null, $start_date = null, $end_date = null, array $column = [])
     {
         $data = [
-            'coord_type' => $coord_type,
+            'coord_type'  => $coord_type,
             'geotable_id' => $geotable_id,
-            'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_index'  => $page_index,
+            'page_size'   => $page_size
         ];
         if (!is_null($title)) {
             $data['title'] = $title;
@@ -101,7 +97,7 @@ class Poi extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'id' => $id
+            'id'          => $id
         ];
         return $this->httpGet("/geodata/v4/poi/detail", $data, 'poi');
     }
@@ -124,7 +120,7 @@ class Poi extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'id' => $id
+            'id'          => $id
         ];
         if (!is_null($title)) {
             $data['title'] = $title;
@@ -182,7 +178,7 @@ class Poi extends Api
                     $data['is_total_del'] = 1;
                 }
             }
-        }else{  //默认不指定ID则为批量删除
+        } else {  //默认不指定ID则为批量删除
             $data['is_total_del'] = 1;
         }
         if (!is_null($title)) {
@@ -212,7 +208,7 @@ class Poi extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'poi_list' => new CURLFile($poi_list_file),
+            'poi_list'    => new CURLFile($poi_list_file),
         ];
         //job_id: 962611269125308068
         return $this->httpPost("/geodata/v4/poi/upload", $data, 'id');

@@ -1,15 +1,13 @@
 <?php
-/**
- * 百度鹰眼WEB服务API
- * 终端管理
- */
 
 namespace fize\third\baidu\yingyan\v3;
 
-use fize\third\baidu\yingyan\Api;
-use Exception;
+use fize\third\baidu\YingYan;
 
-class Entity extends Api
+/**
+ * 终端管理
+ */
+class Entity extends YingYan
 {
     /**
      * 添加
@@ -18,15 +16,14 @@ class Entity extends Api
      * @param mixed $entity_desc entity 可读性描述
      * @param array $column 开发者自定义字段
      * @return bool
-     * @throws Exception
      */
     public function add($service_id, $entity_name, $entity_desc = null, array $column = [])
     {
         $data = [
-            'service_id' => $service_id,
+            'service_id'  => $service_id,
             'entity_name' => $entity_name,
         ];
-        if(!empty($entity_desc)){
+        if (!empty($entity_desc)) {
             $data['entity_desc'] = $entity_desc;
         }
         if (!empty($column)) {
@@ -47,15 +44,14 @@ class Entity extends Api
      * @param mixed $entity_desc entity 可读性描述
      * @param array $column 开发者自定义字段
      * @return bool
-     * @throws Exception
      */
     public function update($service_id, $entity_name, $entity_desc = null, array $column = [])
     {
         $data = [
-            'service_id' => $service_id,
+            'service_id'  => $service_id,
             'entity_name' => $entity_name,
         ];
-        if(!empty($entity_desc)){
+        if (!empty($entity_desc)) {
             $data['entity_desc'] = $entity_desc;
         }
         if (!empty($column)) {
@@ -74,12 +70,11 @@ class Entity extends Api
      * @param int $service_id service的ID
      * @param string $entity_name entity名称，作为其唯一标识
      * @return bool
-     * @throws Exception
      */
     public function delete($service_id, $entity_name)
     {
         $data = [
-            'service_id' => $service_id,
+            'service_id'  => $service_id,
             'entity_name' => $entity_name,
         ];
         $rst = $this->httpPost("/api/v3/entity/delete", $data, 'status');
@@ -98,19 +93,18 @@ class Entity extends Api
      * @param int $page_index 分页索引
      * @param int $page_size 分页大小
      * @return array
-     * @throws Exception
      */
-    public function lists($service_id, array $filter = [], $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
+    public function list($service_id, array $filter = [], $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
     {
         $data = [
-            'service_id' => $service_id,
+            'service_id'        => $service_id,
             'coord_type_output' => $coord_type_output,
-            'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_index'        => $page_index,
+            'page_size'         => $page_size
         ];
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);
@@ -128,21 +122,20 @@ class Entity extends Api
      * @param int $page_index 分页索引
      * @param int $page_size 分页大小
      * @return array
-     * @throws Exception
      */
     public function search($service_id, $query = '', array $filter = [], $sortby = 'entity_name:asc', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
     {
         $data = [
-            'service_id' => $service_id,
-            'query' => $query,
-            'sortby' => $sortby,
+            'service_id'        => $service_id,
+            'query'             => $query,
+            'sortby'            => $sortby,
             'coord_type_output' => $coord_type_output,
-            'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_index'        => $page_index,
+            'page_size'         => $page_size
         ];
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);
@@ -161,22 +154,21 @@ class Entity extends Api
      * @param int $page_index 分页索引
      * @param int $page_size 分页大小
      * @return array
-     * @throws Exception
      */
     public function boundsearch($service_id, $bounds, array $filter = [], $sortby = 'entity_name:asc', $coord_type_input = 'bd09ll', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
     {
         $data = [
-            'service_id' => $service_id,
-            'bounds' => $bounds,
-            'sortby' => $sortby,
-            'coord_type_input' => $coord_type_input,
+            'service_id'        => $service_id,
+            'bounds'            => $bounds,
+            'sortby'            => $sortby,
+            'coord_type_input'  => $coord_type_input,
             'coord_type_output' => $coord_type_output,
-            'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_index'        => $page_index,
+            'page_size'         => $page_size
         ];
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);
@@ -196,23 +188,22 @@ class Entity extends Api
      * @param int $page_index 分页索引
      * @param int $page_size 分页大小
      * @return array
-     * @throws Exception
      */
     public function aroundsearch($service_id, $center, $radius, array $filter = [], $sortby = 'entity_name:asc', $coord_type_input = 'bd09ll', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
     {
         $data = [
-            'service_id' => $service_id,
-            'center' => $center,
-            'radius' => $radius,
-            'sortby' => $sortby,
-            'coord_type_input' => $coord_type_input,
+            'service_id'        => $service_id,
+            'center'            => $center,
+            'radius'            => $radius,
+            'sortby'            => $sortby,
+            'coord_type_input'  => $coord_type_input,
             'coord_type_output' => $coord_type_output,
-            'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_index'        => $page_index,
+            'page_size'         => $page_size
         ];
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);
@@ -231,22 +222,21 @@ class Entity extends Api
      * @param int $page_index 分页索引
      * @param int $page_size 分页大小
      * @return array
-     * @throws Exception
      */
     public function polygonsearch($service_id, $vertexes, array $filter = [], $sortby = 'entity_name:asc', $coord_type_input = 'bd09ll', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
     {
         $data = [
-            'service_id' => $service_id,
-            'vertexes' => $vertexes,
-            'sortby' => $sortby,
-            'coord_type_input' => $coord_type_input,
+            'service_id'        => $service_id,
+            'vertexes'          => $vertexes,
+            'sortby'            => $sortby,
+            'coord_type_input'  => $coord_type_input,
             'coord_type_output' => $coord_type_output,
-            'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_index'        => $page_index,
+            'page_size'         => $page_size
         ];
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);
@@ -265,22 +255,21 @@ class Entity extends Api
      * @param int $page_index 分页索引
      * @param int $page_size 分页大小
      * @return array
-     * @throws Exception
      */
     public function districtsearch($service_id, $keyword, array $filter = [], $sortby = 'entity_name:asc', $return_type = 'all', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
     {
         $data = [
-            'service_id' => $service_id,
-            'keyword' => $keyword,
-            'sortby' => $sortby,
-            'return_type' => $return_type,
+            'service_id'        => $service_id,
+            'keyword'           => $keyword,
+            'sortby'            => $sortby,
+            'return_type'       => $return_type,
             'coord_type_output' => $coord_type_output,
-            'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_index'        => $page_index,
+            'page_size'         => $page_size
         ];
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);

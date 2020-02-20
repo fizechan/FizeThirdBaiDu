@@ -3,17 +3,13 @@
 
 namespace fize\third\baidu\map\v2;
 
-
-use fize\third\baidu\map\Api;
-use Exception;
+use fize\third\baidu\Map;
 
 
 /**
  * 百度地图地点检索服务API
- *
- * @author Fize
  */
-class Place extends Api
+class Place extends Map
 {
 
     /**
@@ -31,7 +27,7 @@ class Place extends Api
      * @param string $region 检索行政区划区域
      * @param string $tag 检索分类，与q组合进行检索，多个分类以","分隔
      * @param bool $city_limit 区域数据召回限制，为true时，仅召回region对应区域内数据
-     * @param string $output 	输出格式为json或者xml，请固定为json
+     * @param string $output 输出格式为json或者xml，请固定为json
      * @param int $scope 检索结果详细程度。取值为1 或空，则返回基本信息；取值为2，返回检索POI详细信息
      * @param array $filter 检索过滤条件
      * @param int $coord_type 坐标类型，1（wgs84ll即GPS经纬度），2（gcj02ll即国测局经纬度坐标），3（bd09ll即百度经纬度坐标），4（bd09mc即百度米制坐标）
@@ -40,32 +36,31 @@ class Place extends Api
      * @param int $page_num 分页页码，默认为0,0代表第一页，1代表第二页，以此类推。常与page_size搭配使用。
      * @param int $timestamp 时间戳，不传递则默认为当前时间戳
      * @return array
-     * @throws Exception
      */
     public function searchRegion($query, $region, $tag = null, $city_limit = true, $output = "json", $scope = 1, array $filter = [], $coord_type = 3, $ret_coordtype = 'bd09ll', $page_size = 10, $page_num = 0, $timestamp = null)
     {
         $data = [
-            'query' => $query,
-            'region' => $region,
-            'city_limit' => $city_limit,
-            'output' => $output,
-            'scope' => $scope,
-            'coord_type' => $coord_type,
+            'query'         => $query,
+            'region'        => $region,
+            'city_limit'    => $city_limit,
+            'output'        => $output,
+            'scope'         => $scope,
+            'coord_type'    => $coord_type,
             'ret_coordtype' => $ret_coordtype,
-            'page_size' => $page_size,
-            'page_num' => $page_num
+            'page_size'     => $page_size,
+            'page_num'      => $page_num
         ];
-        if(!empty($tag)){
+        if (!empty($tag)) {
             $data['tag'] = $tag;
         }
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);
         }
-        if(is_null($timestamp)){
+        if (is_null($timestamp)) {
             $timestamp = time();
         }
         $data['timestamp'] = $timestamp;
@@ -79,7 +74,7 @@ class Place extends Api
      * @param string $tag 检索分类，与q组合进行检索，多个分类以","分隔
      * @param int $radius 周边检索半径，单位为米。
      * @param bool $radius_limit 是否严格限定召回结果在设置检索半径范围内。true（是），false（否）
-     * @param string $output 	输出格式为json或者xml，请固定为json
+     * @param string $output 输出格式为json或者xml，请固定为json
      * @param int $scope 检索结果详细程度。取值为1 或空，则返回基本信息；取值为2，返回检索POI详细信息
      * @param array $filter 检索过滤条件
      * @param int $coord_type 坐标类型，1（wgs84ll即GPS经纬度），2（gcj02ll即国测局经纬度坐标），3（bd09ll即百度经纬度坐标），4（bd09mc即百度米制坐标）
@@ -88,33 +83,32 @@ class Place extends Api
      * @param int $page_num 分页页码，默认为0,0代表第一页，1代表第二页，以此类推。常与page_size搭配使用。
      * @param int $timestamp 时间戳，不传递则默认为当前时间戳
      * @return array
-     * @throws Exception
      */
     public function searchLocation($query, $location, $tag = null, $radius = 1000, $radius_limit = true, $output = "json", $scope = 1, array $filter = [], $coord_type = 3, $ret_coordtype = 'bd09ll', $page_size = 10, $page_num = 0, $timestamp = null)
     {
         $data = [
-            'query' => $query,
-            'location' => $location,
-            'radius' => $radius,
-            'radius_limit' => $radius_limit,
-            'output' => $output,
-            'scope' => $scope,
-            'coord_type' => $coord_type,
+            'query'         => $query,
+            'location'      => $location,
+            'radius'        => $radius,
+            'radius_limit'  => $radius_limit,
+            'output'        => $output,
+            'scope'         => $scope,
+            'coord_type'    => $coord_type,
             'ret_coordtype' => $ret_coordtype,
-            'page_size' => $page_size,
-            'page_num' => $page_num
+            'page_size'     => $page_size,
+            'page_num'      => $page_num
         ];
-        if(!empty($tag)){
+        if (!empty($tag)) {
             $data['tag'] = $tag;
         }
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);
         }
-        if(is_null($timestamp)){
+        if (is_null($timestamp)) {
             $timestamp = time();
         }
         $data['timestamp'] = $timestamp;
@@ -125,7 +119,7 @@ class Place extends Api
      * @param string $query 检索关键字
      * @param string $bounds 检索矩形区域，多组坐标间以","分隔,lat,lng(左下角坐标),lat,lng(右上角坐标)
      * @param string $tag 检索分类，与q组合进行检索，多个分类以","分隔
-     * @param string $output 	输出格式为json或者xml，请固定为json
+     * @param string $output 输出格式为json或者xml，请固定为json
      * @param int $scope 检索结果详细程度。取值为1 或空，则返回基本信息；取值为2，返回检索POI详细信息
      * @param array $filter 检索过滤条件
      * @param int $coord_type 坐标类型，1（wgs84ll即GPS经纬度），2（gcj02ll即国测局经纬度坐标），3（bd09ll即百度经纬度坐标），4（bd09mc即百度米制坐标）
@@ -134,31 +128,30 @@ class Place extends Api
      * @param int $page_num 分页页码，默认为0,0代表第一页，1代表第二页，以此类推。常与page_size搭配使用。
      * @param int $timestamp 时间戳，不传递则默认为当前时间戳
      * @return array
-     * @throws Exception
      */
     public function searchBounds($query, $bounds, $tag = null, $output = "json", $scope = 1, array $filter = [], $coord_type = 3, $ret_coordtype = 'bd09ll', $page_size = 10, $page_num = 0, $timestamp = null)
     {
         $data = [
-            'query' => $query,
-            'bounds' => $bounds,
-            'output' => $output,
-            'scope' => $scope,
-            'coord_type' => $coord_type,
+            'query'         => $query,
+            'bounds'        => $bounds,
+            'output'        => $output,
+            'scope'         => $scope,
+            'coord_type'    => $coord_type,
             'ret_coordtype' => $ret_coordtype,
-            'page_size' => $page_size,
-            'page_num' => $page_num
+            'page_size'     => $page_size,
+            'page_num'      => $page_num
         ];
-        if(!empty($tag)){
+        if (!empty($tag)) {
             $data['tag'] = $tag;
         }
-        if(!empty($filter)){
+        if (!empty($filter)) {
             $string = [];
-            foreach ($filter as $key=> $value){
+            foreach ($filter as $key => $value) {
                 $string[] = "{$key}:{$value}";
             }
             $data['filter'] = implode('|', $string);
         }
-        if(is_null($timestamp)){
+        if (is_null($timestamp)) {
             $timestamp = time();
         }
         $data['timestamp'] = $timestamp;
@@ -172,20 +165,19 @@ class Place extends Api
      * @param string $output 请求返回格式json或xml
      * @param int $timestamp 时间戳，不传递则默认为当前时间戳
      * @return array
-     * @throws Exception
      */
-    public function detail($uid, $scope =1, $output = 'json', $timestamp = null)
+    public function detail($uid, $scope = 1, $output = 'json', $timestamp = null)
     {
         $data = [
             'output' => $output,
-            'scope' => $scope,
+            'scope'  => $scope,
         ];
-        if(is_array($uid)){
+        if (is_array($uid)) {
             $data['uids'] = implode(',', $uid);
-        }else{
+        } else {
             $data['uid'] = $uid;
         }
-        if(is_null($timestamp)){
+        if (is_null($timestamp)) {
             $timestamp = time();
         }
         $data['timestamp'] = $timestamp;
@@ -201,19 +193,18 @@ class Place extends Api
      * @param int $coord_type 坐标类型：1（wgs84ll即GPS经纬度）2（gcj02ll即国测局经纬度坐标）3（bd09ll即百度经纬度坐标）4（bd09mc即百度米制坐标）
      * @param string $ret_coordtype 可选参数，添加后POI返回国测局经纬度坐标
      * @return array
-     * @throws Exception
      */
     public function suggestion($query, $region, $city_limit = false, $location = null, $coord_type = 3, $ret_coordtype = null)
     {
         $data = [
-            'query' => $query,
-            'region' => $region,
-            'city_limit' => $city_limit,
-            'location' => $location,
-            'coord_type' => $coord_type,
+            'query'         => $query,
+            'region'        => $region,
+            'city_limit'    => $city_limit,
+            'location'      => $location,
+            'coord_type'    => $coord_type,
             'ret_coordtype' => $ret_coordtype,
-            'output' => 'json',
-            'timestamp' => time()
+            'output'        => 'json',
+            'timestamp'     => time()
         ];
         return $this->httpGet("/place/v2/suggestion", $data, ['name', 'location', 'uid', 'city', 'district', 'tag', 'address']);
     }

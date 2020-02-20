@@ -1,21 +1,16 @@
 <?php
-/*
- * 百度地图LBS云存储API接口
- */
-
 
 namespace fize\third\baidu\map\v3\geodata;
 
-
-use fize\third\baidu\map\Api;
+use fize\third\baidu\Map;
 
 
 /**
  * 批量操作任务查询接口
  *
- * @author Fize
+ * 百度地图LBS云存储API接口
  */
-class Job extends Api
+class Job extends Map
 {
 
     /**
@@ -32,11 +27,11 @@ class Job extends Api
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'job_id' => $job_id,
-            'status' => $status,
-            'page_index' => $page_index,
-            'page_size' => $page_size,
-            'timestamp' => is_null($timestamp) ? time() : $timestamp,
+            'job_id'      => $job_id,
+            'status'      => $status,
+            'page_index'  => $page_index,
+            'page_size'   => $page_size,
+            'timestamp'   => is_null($timestamp) ? time() : $timestamp,
         ];
 
         $return_column = ['total', 'size', 'process_status', 'process_total', 'process_failed', 'process_success', 'datas', 'header', 'time'];
@@ -46,10 +41,10 @@ class Job extends Api
 
     /**
      * 批量操作任务查询
-     * @todo 指定类型的全部枚举还未清楚
      * @param int $type 指定类型
      * @param int $status 状态，目前是1：新增，2：正在处理，3：完成。
      * @return array 错误时返回false
+     * @todo 指定类型的全部枚举还未清楚
      */
     public function lists($type = null, $status = null)
     {

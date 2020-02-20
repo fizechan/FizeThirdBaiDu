@@ -1,17 +1,14 @@
 <?php
-/**
- * 百度鹰眼WEB服务API
- * 地理围栏管理
- */
 
 namespace fize\third\baidu\yingyan\v3;
 
-use fize\third\baidu\yingyan\Api;
 use fize\crypt\Json;
-use Exception;
+use fize\third\baidu\YingYan;
 
-
-class Fence extends Api
+/**
+ * 地理围栏管理
+ */
+class Fence extends YingYan
 {
 
     /**
@@ -25,24 +22,23 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param int $denoise 围栏去噪参数
      * @return mixed
-     * @throws Exception
      */
     public function createcirclefence($service_id, $longitude, $latitude, $radius, $coord_type = 'bd09ll', $fence_name = null, $monitored_person = null, $denoise = null)
     {
         $data = [
             'service_id' => $service_id,
-            'longitude' => $longitude,
-            'latitude' => $latitude,
-            'radius' => $radius,
+            'longitude'  => $longitude,
+            'latitude'   => $latitude,
+            'radius'     => $radius,
             'coord_type' => $coord_type,
         ];
-        if(!is_null($fence_name)){
+        if (!is_null($fence_name)) {
             $data['fence_name'] = $fence_name;
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($denoise)){
+        if (!is_null($denoise)) {
             $data['denoise'] = $denoise;
         }
         return $this->httpPost("/api/v3/fence/createcirclefence", $data, 'fence_id');
@@ -57,22 +53,21 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param int $denoise 围栏去噪参数
      * @return mixed
-     * @throws Exception
      */
     public function createpolygonfence($service_id, $vertexes, $coord_type = 'bd09ll', $fence_name = null, $monitored_person = null, $denoise = null)
     {
         $data = [
             'service_id' => $service_id,
-            'vertexes' => $vertexes,
+            'vertexes'   => $vertexes,
             'coord_type' => $coord_type,
         ];
-        if(!is_null($fence_name)){
+        if (!is_null($fence_name)) {
             $data['fence_name'] = $fence_name;
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($denoise)){
+        if (!is_null($denoise)) {
             $data['denoise'] = $denoise;
         }
         return $this->httpPost("/api/v3/fence/createpolygonfence", $data, 'fence_id');
@@ -88,23 +83,22 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param int $denoise 围栏去噪参数
      * @return mixed
-     * @throws Exception
      */
     public function createpolylinefence($service_id, $vertexes, $offset, $coord_type = 'bd09ll', $fence_name = null, $monitored_person = null, $denoise = null)
     {
         $data = [
             'service_id' => $service_id,
-            'vertexes' => $vertexes,
-            'offset' => $offset,
+            'vertexes'   => $vertexes,
+            'offset'     => $offset,
             'coord_type' => $coord_type,
         ];
-        if(!is_null($fence_name)){
+        if (!is_null($fence_name)) {
             $data['fence_name'] = $fence_name;
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($denoise)){
+        if (!is_null($denoise)) {
             $data['denoise'] = $denoise;
         }
         return $this->httpPost("/api/v3/fence/createpolylinefence", $data, 'fence_id');
@@ -118,21 +112,20 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param int $denoise 围栏去噪参数
      * @return array
-     * @throws Exception
      */
     public function createdistrictfence($service_id, $keyword, $fence_name = null, $monitored_person = null, $denoise = null)
     {
         $data = [
             'service_id' => $service_id,
-            'keyword' => $keyword
+            'keyword'    => $keyword
         ];
-        if(!is_null($fence_name)){
+        if (!is_null($fence_name)) {
             $data['fence_name'] = $fence_name;
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($denoise)){
+        if (!is_null($denoise)) {
             $data['denoise'] = $denoise;
         }
         return $this->httpPost("/api/v3/fence/createdistrictfence", $data, ['fence_id', 'district', 'district_list']);
@@ -150,33 +143,32 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param int $denoise 围栏去噪参数
      * @return bool
-     * @throws Exception
      */
     public function updatecirclefence($service_id, $fence_id, $longitude = null, $latitude = null, $radius = null, $coord_type = null, $fence_name = null, $monitored_person = null, $denoise = null)
     {
         $data = [
             'service_id' => $service_id,
-            'fence_id' => $fence_id,
+            'fence_id'   => $fence_id,
         ];
-        if(!is_null($longitude)){
+        if (!is_null($longitude)) {
             $data['longitude'] = $longitude;
         }
-        if(!is_null($latitude)){
+        if (!is_null($latitude)) {
             $data['latitude'] = $latitude;
         }
-        if(!is_null($radius)){
+        if (!is_null($radius)) {
             $data['radius'] = $radius;
         }
-        if(!is_null($coord_type)){
+        if (!is_null($coord_type)) {
             $data['coord_type'] = $coord_type;
         }
-        if(!is_null($fence_name)){
+        if (!is_null($fence_name)) {
             $data['fence_name'] = $fence_name;
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($denoise)){
+        if (!is_null($denoise)) {
             $data['denoise'] = $denoise;
         }
         $rst = $this->httpPost("/api/v3/fence/updatecirclefence", $data, 'status');
@@ -197,27 +189,26 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param int $denoise 围栏去噪参数
      * @return bool
-     * @throws Exception
      */
     public function updatepolygonfence($service_id, $fence_id, $vertexes = null, $coord_type = null, $fence_name = null, $monitored_person = null, $denoise = null)
     {
         $data = [
             'service_id' => $service_id,
-            'fence_id' => $fence_id,
+            'fence_id'   => $fence_id,
         ];
-        if(!is_null($vertexes)){
+        if (!is_null($vertexes)) {
             $data['vertexes'] = $vertexes;
         }
-        if(!is_null($coord_type)){
+        if (!is_null($coord_type)) {
             $data['coord_type'] = $coord_type;
         }
-        if(!is_null($fence_name)){
+        if (!is_null($fence_name)) {
             $data['fence_name'] = $fence_name;
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($denoise)){
+        if (!is_null($denoise)) {
             $data['denoise'] = $denoise;
         }
         $rst = $this->httpPost("/api/v3/fence/updatepolygonfence", $data, 'status');
@@ -239,30 +230,29 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param int $denoise 围栏去噪参数
      * @return bool
-     * @throws Exception
      */
     public function updatepolylinefence($service_id, $fence_id, $vertexes = null, $offset = null, $coord_type = null, $fence_name = null, $monitored_person = null, $denoise = null)
     {
         $data = [
             'service_id' => $service_id,
-            'fence_id' => $fence_id,
+            'fence_id'   => $fence_id,
         ];
-        if(!is_null($vertexes)){
+        if (!is_null($vertexes)) {
             $data['vertexes'] = $vertexes;
         }
-        if(!is_null($offset)){
+        if (!is_null($offset)) {
             $data['offset'] = $offset;
         }
-        if(!is_null($coord_type)){
+        if (!is_null($coord_type)) {
             $data['coord_type'] = $coord_type;
         }
-        if(!is_null($fence_name)){
+        if (!is_null($fence_name)) {
             $data['fence_name'] = $fence_name;
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($denoise)){
+        if (!is_null($denoise)) {
             $data['denoise'] = $denoise;
         }
         $rst = $this->httpPost("/api/v3/fence/updatepolylinefence", $data, 'status');
@@ -282,24 +272,23 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param int $denoise 围栏去噪参数
      * @return array
-     * @throws Exception
      */
     public function updatedistrictfence($service_id, $fence_id, $keyword = null, $fence_name = null, $monitored_person = null, $denoise = null)
     {
         $data = [
             'service_id' => $service_id,
-            'fence_id' => $fence_id,
+            'fence_id'   => $fence_id,
         ];
-        if(!is_null($keyword)){
+        if (!is_null($keyword)) {
             $data['keyword'] = $keyword;
         }
-        if(!is_null($fence_name)){
+        if (!is_null($fence_name)) {
             $data['fence_name'] = $fence_name;
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($denoise)){
+        if (!is_null($denoise)) {
             $data['denoise'] = $denoise;
         }
         return $this->httpPost("/api/v3/fence/updatedistrictfence", $data, ['district', 'district_list']);
@@ -311,17 +300,16 @@ class Fence extends Api
      * @param array $fence_ids 围栏id列表
      * @param string $monitored_person 监控对象
      * @return mixed
-     * @throws Exception
      */
     public function delete($service_id, array $fence_ids = [], $monitored_person = null)
     {
         $data = [
             'service_id' => $service_id
         ];
-        if(!empty($fence_ids)){
+        if (!empty($fence_ids)) {
             $data['fence_ids'] = implode(',', $fence_ids);
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
         return $this->httpPost("/api/v3/fence/delete", $data, 'fence_ids');
@@ -334,20 +322,19 @@ class Fence extends Api
      * @param string $monitored_person 监控对象
      * @param string $coord_type_output 输出坐标类型
      * @return array
-     * @throws Exception
      */
     public function lists($service_id, array $fence_ids = [], $monitored_person = null, $coord_type_output = null)
     {
         $data = [
             'service_id' => $service_id
         ];
-        if(!empty($fence_ids)){
+        if (!empty($fence_ids)) {
             $data['fence_ids'] = implode(',', $fence_ids);
         }
-        if(!is_null($monitored_person)){
+        if (!is_null($monitored_person)) {
             $data['monitored_person'] = $monitored_person;
         }
-        if(!is_null($coord_type_output)){
+        if (!is_null($coord_type_output)) {
             $data['coord_type_output'] = $coord_type_output;
         }
         return $this->httpGet("/api/v3/fence/list", $data, ['size', 'fences']);
@@ -359,13 +346,12 @@ class Fence extends Api
      * @param int $fence_id 围栏的唯一标识
      * @param string $monitored_person 监控对象，支持多个，使用英文逗号分隔
      * @return bool
-     * @throws Exception
      */
     public function addmonitoredperson($service_id, $fence_id, $monitored_person)
     {
         $data = [
-            'service_id' => $service_id,
-            '$fence_id' => $fence_id,
+            'service_id'       => $service_id,
+            '$fence_id'        => $fence_id,
             'monitored_person' => $monitored_person
         ];
         $rst = $this->httpPost("/api/v3/fence/addmonitoredperson", $data, 'status');
@@ -382,13 +368,12 @@ class Fence extends Api
      * @param int $fence_id 围栏的唯一标识
      * @param string $monitored_person 监控对象，支持多个，使用英文逗号分隔
      * @return bool
-     * @throws Exception
      */
     public function deletemonitoredperson($service_id, $fence_id, $monitored_person)
     {
         $data = [
-            'service_id' => $service_id,
-            '$fence_id' => $fence_id,
+            'service_id'       => $service_id,
+            '$fence_id'        => $fence_id,
             'monitored_person' => $monitored_person
         ];
         $rst = $this->httpPost("/api/v3/fence/deletemonitoredperson", $data, 'status');
@@ -406,15 +391,14 @@ class Fence extends Api
      * @param int $page_index 分页索引
      * @param int $page_size 分页大小
      * @return array
-     * @throws Exception
      */
     public function listmonitoredperson($service_id, $fence_id, $page_index = 1, $page_size = 100)
     {
         $data = [
             'service_id' => $service_id,
-            'fence_id' => $fence_id,
+            'fence_id'   => $fence_id,
             'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_size'  => $page_size
         ];
         return $this->httpGet("/api/v3/fence/listmonitoredperson", $data, ['total', 'size', 'monitored_person']);
     }
@@ -425,15 +409,14 @@ class Fence extends Api
      * @param string $monitored_person 监控对象的 entity_name
      * @param array $fence_ids 围栏实体的id列表,若不填，则查询监控对象上的所有围栏状态
      * @return array
-     * @throws Exception
      */
     public function querystatus($service_id, $monitored_person, array $fence_ids = [])
     {
         $data = [
-            'service_id' => $service_id,
+            'service_id'       => $service_id,
             'monitored_person' => $monitored_person
         ];
-        if(!empty($fence_ids)){
+        if (!empty($fence_ids)) {
             $data['fence_ids'] = implode(',', $fence_ids);
         }
         return $this->httpGet("/api/v3/fence/querystatus", $data, ['size', 'monitored_statuses']);
@@ -448,24 +431,23 @@ class Fence extends Api
      * @param int $end_time 结束时间戳
      * @param string $coord_type_output 返回坐标类型
      * @return array
-     * @throws Exception
      */
     public function historyalarm($service_id, $monitored_person, array $fence_ids = [], $start_time = null, $end_time = null, $coord_type_output = null)
     {
         $data = [
-            'service_id' => $service_id,
+            'service_id'       => $service_id,
             'monitored_person' => $monitored_person
         ];
-        if(!empty($fence_ids)){
+        if (!empty($fence_ids)) {
             $data['fence_ids'] = implode(',', $fence_ids);
         }
-        if(!is_null($start_time)){
+        if (!is_null($start_time)) {
             $data['start_time'] = $start_time;
         }
-        if(!is_null($end_time)){
+        if (!is_null($end_time)) {
             $data['end_time'] = $end_time;
         }
-        if(!is_null($coord_type_output)){
+        if (!is_null($coord_type_output)) {
             $data['coord_type_output'] = $coord_type_output;
         }
         return $this->httpGet("/api/v3/fence/historyalarm", $data, ['size', 'alarms']);
@@ -480,17 +462,16 @@ class Fence extends Api
      * @param int $page_index 分页索引
      * @param int $page_size 分页大小
      * @return array
-     * @throws Exception
      */
     public function batchhistoryalarm($service_id, $start_time, $end_time, $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 500)
     {
         $data = [
-            'service_id' => $service_id,
-            'start_time' => $start_time,
-            'end_time' => $end_time,
+            'service_id'        => $service_id,
+            'start_time'        => $start_time,
+            'end_time'          => $end_time,
             'coord_type_output' => $coord_type_output,
-            'page_index' => $page_index,
-            'page_size' => $page_size
+            'page_index'        => $page_index,
+            'page_size'         => $page_size
         ];
         return $this->httpGet("/api/v3/fence/batchhistoryalarm", $data, ['total', 'size', 'alarms']);
     }
@@ -504,18 +485,18 @@ class Fence extends Api
         header('Content-type: application/json');
         header('SignId: baidu_yingyan');
         $request = file_get_contents("php://input");
-        if(empty($request)){
+        if (empty($request)) {
             $out = [
-                'status' => 1,
+                'status'  => 1,
                 'message' => '未接收到参数'
             ];
             echo Json::encode($out);
             return;
         }
         $request = Json::decode($request);
-        if(!$request){
+        if (!$request) {
             $out = [
-                'status' => 2,
+                'status'  => 2,
                 'message' => '参数格式错误'
             ];
             echo Json::encode($out);
@@ -523,7 +504,7 @@ class Fence extends Api
         }
         list($status, $message) = $handle($request);
         $out = [
-            'status' => $status,
+            'status'  => $status,
             'message' => $message
         ];
         echo Json::encode($out);

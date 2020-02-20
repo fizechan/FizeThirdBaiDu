@@ -1,16 +1,15 @@
 <?php
+
+
+namespace fize\third\baidu\map\v2;
+
+use fize\third\baidu\Map;
+
 /**
  * 路线规划
  * @see http://lbsyun.baidu.com/index.php?title=webapi/direction-api-v2
  */
-
-namespace fize\third\baidu\map\v2;
-
-use fize\third\baidu\map\Api;
-use Exception;
-
-
-class Direction extends Api
+class Direction extends Map
 {
 
     /**
@@ -25,21 +24,20 @@ class Direction extends Api
      * @param int $page_size 返回每页几条路线
      * @param int $page_index 返回第几页
      * @return array 错误则返回false
-     * @throws Exception
      */
     public function transit($origin, $destination, $coord_type = 'bd09ll', $tactics_incity = 0, $tactics_intercity = 0, $trans_type_intercity = 0, $ret_coordtype = 'bd09ll', $page_size = 10, $page_index = 1)
     {
         $data = [
-            'origin' => $origin,
-            'destination' => $destination,
-            'coord_type' => $coord_type,
-            'tactics_incity' => $tactics_incity,
-            'tactics_intercity' => $tactics_intercity,
+            'origin'               => $origin,
+            'destination'          => $destination,
+            'coord_type'           => $coord_type,
+            'tactics_incity'       => $tactics_incity,
+            'tactics_intercity'    => $tactics_intercity,
             'trans_type_intercity' => $trans_type_intercity,
-            'ret_coordtype' => $ret_coordtype,
-            'output' => 'json',
-            'page_size' => $page_size,
-            'page_index' => $page_index
+            'ret_coordtype'        => $ret_coordtype,
+            'output'               => 'json',
+            'page_size'            => $page_size,
+            'page_index'           => $page_index
         ];
         return $this->httpGet("/direction/v2/transit", $data, 'result');
     }
@@ -52,17 +50,16 @@ class Direction extends Api
      * @param string $ret_coordtype 输出坐标类型
      * @param int $riding_type 骑行类型,默认0：0-普通  1-电动车
      * @return array 错误则返回false
-     * @throws Exception
      */
     public function riding($origin, $destination, $coord_type = 'bd09ll', $ret_coordtype = 'bd09ll', $riding_type = 0)
     {
         $data = [
-            'origin' => $origin,
-            'destination' => $destination,
-            'coord_type' => $coord_type,
+            'origin'        => $origin,
+            'destination'   => $destination,
+            'coord_type'    => $coord_type,
             'ret_coordtype' => $ret_coordtype,
-            'output' => 'json',
-            'riding_type' => $riding_type
+            'output'        => 'json',
+            'riding_type'   => $riding_type
         ];
         return $this->httpGet("/direction/v2/riding", $data, 'result');
     }
@@ -80,18 +77,17 @@ class Direction extends Api
      * @param string $plate_number 车牌号，如 京A00022，用于规避车牌号限行路段。
      * @param int $timestamp 时间戳
      * @return array 错误则返回false
-     * @throws Exception
      */
     public function driving($origin, $destination, $origin_uid = null, $destination_uid = null, $coord_type = 'bd09ll', $ret_coordtype = 'bd09ll', $tactics = 0, $alternatives = 0, $plate_number = null, $timestamp = null)
     {
         $data = [
-            'origin' => $origin,
-            'destination' => $destination,
-            'coord_type' => $coord_type,
+            'origin'        => $origin,
+            'destination'   => $destination,
+            'coord_type'    => $coord_type,
             'ret_coordtype' => $ret_coordtype,
-            'tactics' => $tactics,
-            'alternatives' => $alternatives,
-            'output' => 'json',
+            'tactics'       => $tactics,
+            'alternatives'  => $alternatives,
+            'output'        => 'json',
         ];
         if (!is_null($origin_uid)) {
             $data['origin_uid'] = $origin_uid;
@@ -102,7 +98,7 @@ class Direction extends Api
         if (!is_null($plate_number)) {
             $data['plate_number'] = $plate_number;
         }
-        if(is_null($timestamp)){
+        if (is_null($timestamp)) {
             $timestamp = time();
         }
         $data['timestamp'] = $timestamp;

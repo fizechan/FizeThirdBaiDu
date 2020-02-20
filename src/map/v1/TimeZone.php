@@ -1,14 +1,13 @@
 <?php
-/**
- * 时区服务
- */
 
 namespace fize\third\baidu\map\v1;
 
-use fize\third\baidu\map\Api;
-use Exception;
+use fize\third\baidu\Map;
 
-class TimeZone extends Api
+/**
+ * 时区服务
+ */
+class TimeZone extends Map
 {
 
     /**
@@ -17,15 +16,14 @@ class TimeZone extends Api
      * @param string $coord_type 坐标的类型
      * @param int $timestamp 时间戳
      * @return array 错误则返回false
-     * @throws Exception
      */
     public function timezone($location, $coord_type = 'bd09ll', $timestamp = null)
     {
         $data = [
-            'location' => $location,
+            'location'   => $location,
             'coord_type' => $coord_type,
         ];
-        if(is_null($timestamp)){
+        if (is_null($timestamp)) {
             $timestamp = time();
         }
         $data['timestamp'] = $timestamp;

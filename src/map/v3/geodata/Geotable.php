@@ -1,21 +1,16 @@
 <?php
-/*
- * 百度地图LBS云存储API接口
- */
-
 
 namespace fize\third\baidu\map\v3\geodata;
 
-
-use fize\third\baidu\map\Api;
+use fize\third\baidu\Map;
 
 
 /**
  * 数据表操作接口
  *
- * @author Fize
+ * 百度地图LBS云存储API接口
  */
-class Geotable extends Api
+class Geotable extends Map
 {
 
     /**
@@ -33,10 +28,10 @@ class Geotable extends Api
         }
 
         $data = [
-            'name' => $name,
-            'geotype' => $geotype,
+            'name'         => $name,
+            'geotype'      => $geotype,
             'is_published' => $is_published,
-            'timestamp' => $timestamp,
+            'timestamp'    => $timestamp,
         ];
 
         return $this->httpPost("/geodata/v3/geotable/create", $data, 'id');

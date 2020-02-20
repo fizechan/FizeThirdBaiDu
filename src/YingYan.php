@@ -1,15 +1,14 @@
 <?php
 
 
-namespace fize\third\baidu\yingyan;
+namespace fize\third\baidu;
 
-use fize\third\baidu\map\Api as Common;
+use fize\third\baidu\Map as Common;
 
 /**
  * 百度鹰眼接口请求基类
- * @author Fize
  */
-class Api extends Common
+class YingYan extends Common
 {
     /**
      * 主URL域名

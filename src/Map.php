@@ -1,17 +1,17 @@
 <?php
 
 
-namespace fize\third\baidu\map;
+namespace fize\third\baidu;
 
+use RuntimeException;
 use fize\net\Http;
 use fize\crypt\Json;
-use Exception;
+
 
 /**
  * 百度LBS接口请求基类
- * @author Fize
  */
-class Api
+class Map
 {
 
     /**
@@ -40,11 +40,6 @@ class Api
     protected static $DOMAIN_API = "http://api.map.baidu.com";
 
     /**
-     * @var Http
-     */
-    private $http;
-
-    /**
      * 实例化
      * @param string $ak 应用AK
      * @param string $sk SK
@@ -53,8 +48,6 @@ class Api
     {
         $this->ak = $ak;
         $this->sk = $sk;
-
-        $this->http = new Http();
     }
 
     /**
@@ -108,20 +101,16 @@ class Api
 
         $url = self::$DOMAIN_API . $uri . "?" . $paras_str;
 
-        //die($url);
-
-        $json = $this->http->get($url);
+        $json = Http::get($url);
 
         if ($json === false) {
-            throw new Exception("发送GET请求时发生错误", 100001);
+            throw new RuntimeException(Http::getLastErrMsg(), Http::getLastErrCode());
         }
 
         $array = Json::decode($json);
 
-        //var_dump($array);
-
         if ($array === false) {
-            throw new Exception("解析JSON数据时发生错误", 100002);
+            throw new RuntimeException(Json::lastErrorMsg(), Json::lastError());
         }
 
         $this->errCode = isset($array['status']) ? $array['status'] : 0;
@@ -160,18 +149,16 @@ class Api
         $url = self::$DOMAIN_API . $uri;
         //die($url);
 
-        $json = $this->http->post($url, $paras);
+        $json = Http::post($url, $paras);
 
         if ($json === false) {
-            throw new Exception("发送POST请求时发生错误", 100003);
+            throw new RuntimeException(Http::getLastErrMsg(), Http::getLastErrCode());
         }
 
         $array = Json::decode($json);
 
-        //var_dump($array);
-
         if ($array === false) {
-            throw new Exception("解析JSON数据时发生错误", 100004);
+            throw new RuntimeException(Json::lastErrorMsg(), Json::lastError());
         }
 
         $this->errCode = isset($array['status']) ? $array['status'] : 0;

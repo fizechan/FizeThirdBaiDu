@@ -1,21 +1,16 @@
 <?php
-/*
- * 百度地图LBS云存储(V4)API接口
- */
-
 
 namespace fize\third\baidu\map\v4\geodata;
 
-
-use fize\third\baidu\map\Api;
+use fize\third\baidu\Map;
 
 
 /**
  * 批量操作任务查询接口
  *
- * @author Fize
+ * 百度地图LBS云存储(V4)API接口
  */
-class Job extends Api
+class Job extends Map
 {
 
     /**
@@ -26,14 +21,14 @@ class Job extends Api
      * @param int $page_index 分页索引，默认为0
      * @return array 错误时返回false
      */
-    public function lists($geotable_id, $id = null, $page_size = 10, $page_index = 0)
+    public function list($geotable_id, $id = null, $page_size = 10, $page_index = 0)
     {
         $data = [
             'geotable_id' => $geotable_id,
-            'page_size' => $page_size,
-            'page_index' => $page_index,
+            'page_size'   => $page_size,
+            'page_index'  => $page_index,
         ];
-        if(!empty($id)){
+        if (!empty($id)) {
             $data['id'] = $id;
         }
         $return_column = ['jobs'];
