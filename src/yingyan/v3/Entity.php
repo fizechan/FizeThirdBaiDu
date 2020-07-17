@@ -11,10 +11,10 @@ class Entity extends YingYan
 {
     /**
      * 添加
-     * @param int $service_id service的ID
+     * @param int    $service_id  service的ID
      * @param string $entity_name entity名称，作为其唯一标识
-     * @param mixed $entity_desc entity 可读性描述
-     * @param array $column 开发者自定义字段
+     * @param mixed  $entity_desc entity 可读性描述
+     * @param array  $column      开发者自定义字段
      * @return bool
      */
     public function add($service_id, $entity_name, $entity_desc = null, array $column = [])
@@ -39,10 +39,10 @@ class Entity extends YingYan
 
     /**
      * 更新
-     * @param int $service_id service的ID
+     * @param int    $service_id  service的ID
      * @param string $entity_name entity名称，作为其唯一标识
-     * @param mixed $entity_desc entity 可读性描述
-     * @param array $column 开发者自定义字段
+     * @param mixed  $entity_desc entity 可读性描述
+     * @param array  $column      开发者自定义字段
      * @return bool
      */
     public function update($service_id, $entity_name, $entity_desc = null, array $column = [])
@@ -67,7 +67,7 @@ class Entity extends YingYan
 
     /**
      * 删除
-     * @param int $service_id service的ID
+     * @param int    $service_id  service的ID
      * @param string $entity_name entity名称，作为其唯一标识
      * @return bool
      */
@@ -87,11 +87,11 @@ class Entity extends YingYan
 
     /**
      * 查询
-     * @param int $service_id service的ID
-     * @param array $filter 搜索条件
+     * @param int    $service_id        service的ID
+     * @param array  $filter            搜索条件
      * @param string $coord_type_output 返回结果的坐标类型
-     * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param int    $page_index        分页索引
+     * @param int    $page_size         分页大小
      * @return array
      */
     public function list($service_id, array $filter = [], $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
@@ -114,13 +114,13 @@ class Entity extends YingYan
 
     /**
      * 关键字搜索
-     * @param int $service_id service的ID
-     * @param string $query 搜索关键字
-     * @param array $filter 过滤条件
-     * @param string $sortby 排序方法
+     * @param int    $service_id        service的ID
+     * @param string $query             搜索关键字
+     * @param array  $filter            过滤条件
+     * @param string $sortby            排序方法
      * @param string $coord_type_output 返回结果的坐标类型
-     * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param int    $page_index        分页索引
+     * @param int    $page_size         分页大小
      * @return array
      */
     public function search($service_id, $query = '', array $filter = [], $sortby = 'entity_name:asc', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
@@ -145,14 +145,14 @@ class Entity extends YingYan
 
     /**
      * 矩形范围搜索
-     * @param int $service_id service的ID
-     * @param string $bounds 矩形区域,坐标点顺序为"左下;右上"，坐标对间使用;号分隔，格式为：纬度,经度;纬度,经度
-     * @param array $filter 过滤条件
-     * @param string $sortby 排序方法
-     * @param string $coord_type_input 请求参数 bounds 的坐标类型
+     * @param int    $service_id        service的ID
+     * @param string $bounds            矩形区域,坐标点顺序为"左下;右上"，坐标对间使用;号分隔，格式为：纬度,经度;纬度,经度
+     * @param array  $filter            过滤条件
+     * @param string $sortby            排序方法
+     * @param string $coord_type_input  请求参数 bounds 的坐标类型
      * @param string $coord_type_output 返回结果的坐标类型
-     * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param int    $page_index        分页索引
+     * @param int    $page_size         分页大小
      * @return array
      */
     public function boundsearch($service_id, $bounds, array $filter = [], $sortby = 'entity_name:asc', $coord_type_input = 'bd09ll', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
@@ -178,15 +178,15 @@ class Entity extends YingYan
 
     /**
      * 周边搜索
-     * @param int $service_id service的ID
-     * @param string $center 中心点经纬度。格式为：纬度,经度
-     * @param int $radius 搜索半径，单位：米
-     * @param array $filter 过滤条件
-     * @param string $sortby 排序方法
-     * @param string $coord_type_input 请求参数 $center 的坐标类型
+     * @param int    $service_id        service的ID
+     * @param string $center            中心点经纬度。格式为：纬度,经度
+     * @param int    $radius            搜索半径，单位：米
+     * @param array  $filter            过滤条件
+     * @param string $sortby            排序方法
+     * @param string $coord_type_input  请求参数 $center 的坐标类型
      * @param string $coord_type_output 返回结果的坐标类型
-     * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param int    $page_index        分页索引
+     * @param int    $page_size         分页大小
      * @return array
      */
     public function aroundsearch($service_id, $center, $radius, array $filter = [], $sortby = 'entity_name:asc', $coord_type_input = 'bd09ll', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
@@ -213,14 +213,14 @@ class Entity extends YingYan
 
     /**
      * 多边形搜索
-     * @param int $service_id service的ID
-     * @param string $vertexes 多边形边界点,规则： 经纬度顺序为：纬度,经度；
-     * @param array $filter 过滤条件
-     * @param string $sortby 排序方法
-     * @param string $coord_type_input 请求参数 $center 的坐标类型
+     * @param int    $service_id        service的ID
+     * @param string $vertexes          多边形边界点,规则： 经纬度顺序为：纬度,经度；
+     * @param array  $filter            过滤条件
+     * @param string $sortby            排序方法
+     * @param string $coord_type_input  请求参数 $center 的坐标类型
      * @param string $coord_type_output 返回结果的坐标类型
-     * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param int    $page_index        分页索引
+     * @param int    $page_size         分页大小
      * @return array
      */
     public function polygonsearch($service_id, $vertexes, array $filter = [], $sortby = 'entity_name:asc', $coord_type_input = 'bd09ll', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)
@@ -246,14 +246,14 @@ class Entity extends YingYan
 
     /**
      * 行政区搜索
-     * @param int $service_id service的ID
-     * @param string $keyword 行政区划关键字
-     * @param array $filter 过滤条件
-     * @param string $sortby 排序方法
-     * @param string $return_type 设置返回值的内容
+     * @param int    $service_id        service的ID
+     * @param string $keyword           行政区划关键字
+     * @param array  $filter            过滤条件
+     * @param string $sortby            排序方法
+     * @param string $return_type       设置返回值的内容
      * @param string $coord_type_output 返回结果的坐标类型
-     * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param int    $page_index        分页索引
+     * @param int    $page_size         分页大小
      * @return array
      */
     public function districtsearch($service_id, $keyword, array $filter = [], $sortby = 'entity_name:asc', $return_type = 'all', $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 100)

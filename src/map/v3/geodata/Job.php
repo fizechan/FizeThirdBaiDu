@@ -21,7 +21,7 @@ class Job extends Map
      * @param int $page_index 分页索引，默认为0
      * @param int $page_size 分页数目，默认为10，上限为100
      * @param int $timestamp 时间戳，不指定时为null
-     * @return array 错误时返回false
+     * @return array
      */
     public function listimportdata($geotable_id, $job_id, $status = 0, $page_index = 0, $page_size = 10, $timestamp = null)
     {
@@ -43,7 +43,7 @@ class Job extends Map
      * 批量操作任务查询
      * @param int $type 指定类型
      * @param int $status 状态，目前是1：新增，2：正在处理，3：完成。
-     * @return array 错误时返回false
+     * @return array
      * @todo 指定类型的全部枚举还未清楚
      */
     public function lists($type = null, $status = null)

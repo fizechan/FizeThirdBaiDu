@@ -14,7 +14,7 @@ class Geocoder extends Map
      * @param string $address 地址描述
      * @param string $city 指定所在城市
      * @param string $ret_coordtype 指定坐标系
-     * @return array 错误则返回false
+     * @return array
      */
     public function encode($address, $city = null, $ret_coordtype = 'bd09ll')
     {
@@ -41,7 +41,7 @@ class Geocoder extends Map
      * @param bool $extensions_road 当取值为true时，召回坐标周围最近的3条道路数据
      * @param bool $extensions_town 当取值为true时，行政区划返回乡镇级数据。默认不访问。
      * @param int $latest_admin 是否访问最新版行政区划数据，1（访问），0（不访问）
-     * @return array 错误则返回false
+     * @return array
      */
     public function decode($location, $coordtype = null, $ret_coordtype = null, $batch = false, $pois = 0, $radius = 1000, $extensions_poi = null, $extensions_road = false, $extensions_town = null, $latest_admin = 0)
     {

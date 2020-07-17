@@ -1,25 +1,25 @@
 {
-  "name": "fize/third-baidu",
-  "description": "百度各类接口实现",
-  "license": "MIT",
   "authors": [
     {
       "name": "FizeChan",
       "email": "chenfengzhan@qq.com"
     }
   ],
-  "require": {
-    "php": ">=7.0",
-    "ext-curl": "*",
-    "fize/crypt": "~3.2",
-    "fize/net": "~4.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^8.0.0"
-  },
   "autoload": {
     "psr-4": {
       "fize\\third\\baidu\\": "src"
     }
+  },
+  "description": "百度各类接口实现",
+  "license": "MIT",
+  "name": "fize/third-baidu",
+  "require": {
+    "php": ">=7.0",
+    "ext-curl": "*",
+    "fize/crypt": "~3.2.0",
+    "fize/net": "~4.2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~9.2.6"
   }
 }

@@ -13,14 +13,14 @@ class Fence extends YingYan
 
     /**
      * 创建圆形围栏
-     * @param int $service_id service的唯一标识
-     * @param float $longitude 围栏圆心经度
-     * @param float $latitude 围栏圆心纬度
-     * @param float $radius 围栏半径
-     * @param string $coord_type 坐标类型
-     * @param string $fence_name 围栏名称
+     * @param int    $service_id       service的唯一标识
+     * @param float  $longitude        围栏圆心经度
+     * @param float  $latitude         围栏圆心纬度
+     * @param float  $radius           围栏半径
+     * @param string $coord_type       坐标类型
+     * @param string $fence_name       围栏名称
      * @param string $monitored_person 监控对象
-     * @param int $denoise 围栏去噪参数
+     * @param int    $denoise          围栏去噪参数
      * @return mixed
      */
     public function createcirclefence($service_id, $longitude, $latitude, $radius, $coord_type = 'bd09ll', $fence_name = null, $monitored_person = null, $denoise = null)
@@ -46,12 +46,12 @@ class Fence extends YingYan
 
     /**
      * 创建多边形围栏
-     * @param int $service_id service的唯一标识
-     * @param string $vertexes 多边形围栏形状点, 经纬度顺序为：纬度,经度；
-     * @param string $coord_type 坐标类型
-     * @param string $fence_name 围栏名称
+     * @param int    $service_id       service的唯一标识
+     * @param string $vertexes         多边形围栏形状点, 经纬度顺序为：纬度,经度；
+     * @param string $coord_type       坐标类型
+     * @param string $fence_name       围栏名称
      * @param string $monitored_person 监控对象
-     * @param int $denoise 围栏去噪参数
+     * @param int    $denoise          围栏去噪参数
      * @return mixed
      */
     public function createpolygonfence($service_id, $vertexes, $coord_type = 'bd09ll', $fence_name = null, $monitored_person = null, $denoise = null)
@@ -75,13 +75,13 @@ class Fence extends YingYan
 
     /**
      * 创建线型围栏
-     * @param int $service_id service的唯一标识
-     * @param string $vertexes 线型围栏坐标点
-     * @param int $offset 偏离距离
-     * @param string $coord_type 坐标类型
-     * @param string $fence_name 围栏名称
+     * @param int    $service_id       service的唯一标识
+     * @param string $vertexes         线型围栏坐标点
+     * @param int    $offset           偏离距离
+     * @param string $coord_type       坐标类型
+     * @param string $fence_name       围栏名称
      * @param string $monitored_person 监控对象
-     * @param int $denoise 围栏去噪参数
+     * @param int    $denoise          围栏去噪参数
      * @return mixed
      */
     public function createpolylinefence($service_id, $vertexes, $offset, $coord_type = 'bd09ll', $fence_name = null, $monitored_person = null, $denoise = null)
@@ -106,11 +106,11 @@ class Fence extends YingYan
 
     /**
      * 创建行政区划围栏
-     * @param int $service_id service的唯一标识
-     * @param string $keyword 行政区划关键字
-     * @param string $fence_name 围栏名称
+     * @param int    $service_id       service的唯一标识
+     * @param string $keyword          行政区划关键字
+     * @param string $fence_name       围栏名称
      * @param string $monitored_person 监控对象
-     * @param int $denoise 围栏去噪参数
+     * @param int    $denoise          围栏去噪参数
      * @return array
      */
     public function createdistrictfence($service_id, $keyword, $fence_name = null, $monitored_person = null, $denoise = null)
@@ -133,15 +133,15 @@ class Fence extends YingYan
 
     /**
      * 更新圆形围栏
-     * @param int $service_id service的唯一标识
-     * @param int $fence_id 围栏的唯一标识
-     * @param float $longitude 围栏圆心经度
-     * @param float $latitude 围栏圆心纬度
-     * @param float $radius 围栏半径
-     * @param string $coord_type 坐标类型
-     * @param string $fence_name 围栏名称
+     * @param int    $service_id       service的唯一标识
+     * @param int    $fence_id         围栏的唯一标识
+     * @param float  $longitude        围栏圆心经度
+     * @param float  $latitude         围栏圆心纬度
+     * @param float  $radius           围栏半径
+     * @param string $coord_type       坐标类型
+     * @param string $fence_name       围栏名称
      * @param string $monitored_person 监控对象
-     * @param int $denoise 围栏去噪参数
+     * @param int    $denoise          围栏去噪参数
      * @return bool
      */
     public function updatecirclefence($service_id, $fence_id, $longitude = null, $latitude = null, $radius = null, $coord_type = null, $fence_name = null, $monitored_person = null, $denoise = null)
@@ -181,13 +181,13 @@ class Fence extends YingYan
 
     /**
      * 更新多边形围栏
-     * @param int $service_id service的唯一标识
-     * @param int $fence_id 围栏的唯一标识
-     * @param string $vertexes 多边形围栏形状点, 经纬度顺序为：纬度,经度；
-     * @param string $coord_type 坐标类型
-     * @param string $fence_name 围栏名称
+     * @param int    $service_id       service的唯一标识
+     * @param int    $fence_id         围栏的唯一标识
+     * @param string $vertexes         多边形围栏形状点, 经纬度顺序为：纬度,经度；
+     * @param string $coord_type       坐标类型
+     * @param string $fence_name       围栏名称
      * @param string $monitored_person 监控对象
-     * @param int $denoise 围栏去噪参数
+     * @param int    $denoise          围栏去噪参数
      * @return bool
      */
     public function updatepolygonfence($service_id, $fence_id, $vertexes = null, $coord_type = null, $fence_name = null, $monitored_person = null, $denoise = null)
@@ -221,14 +221,14 @@ class Fence extends YingYan
 
     /**
      * 更新线型围栏
-     * @param int $service_id service的唯一标识
-     * @param int $fence_id 围栏的唯一标识
-     * @param string $vertexes 线型围栏坐标点
-     * @param int $offset 偏离距离
-     * @param string $coord_type 坐标类型
-     * @param string $fence_name 围栏名称
+     * @param int    $service_id       service的唯一标识
+     * @param int    $fence_id         围栏的唯一标识
+     * @param string $vertexes         线型围栏坐标点
+     * @param int    $offset           偏离距离
+     * @param string $coord_type       坐标类型
+     * @param string $fence_name       围栏名称
      * @param string $monitored_person 监控对象
-     * @param int $denoise 围栏去噪参数
+     * @param int    $denoise          围栏去噪参数
      * @return bool
      */
     public function updatepolylinefence($service_id, $fence_id, $vertexes = null, $offset = null, $coord_type = null, $fence_name = null, $monitored_person = null, $denoise = null)
@@ -265,12 +265,12 @@ class Fence extends YingYan
 
     /**
      * 更新行政区划围栏
-     * @param int $service_id service的唯一标识
-     * @param int $fence_id 围栏的唯一标识
-     * @param string $keyword 行政区划关键字
-     * @param string $fence_name 围栏名称
+     * @param int    $service_id       service的唯一标识
+     * @param int    $fence_id         围栏的唯一标识
+     * @param string $keyword          行政区划关键字
+     * @param string $fence_name       围栏名称
      * @param string $monitored_person 监控对象
-     * @param int $denoise 围栏去噪参数
+     * @param int    $denoise          围栏去噪参数
      * @return array
      */
     public function updatedistrictfence($service_id, $fence_id, $keyword = null, $fence_name = null, $monitored_person = null, $denoise = null)
@@ -296,8 +296,8 @@ class Fence extends YingYan
 
     /**
      * 删除围栏
-     * @param int $service_id service的唯一标识
-     * @param array $fence_ids 围栏id列表
+     * @param int    $service_id       service的唯一标识
+     * @param array  $fence_ids        围栏id列表
      * @param string $monitored_person 监控对象
      * @return mixed
      */
@@ -317,9 +317,9 @@ class Fence extends YingYan
 
     /**
      * 查询围栏
-     * @param int $service_id service的唯一标识
-     * @param array $fence_ids 围栏id列表
-     * @param string $monitored_person 监控对象
+     * @param int    $service_id        service的唯一标识
+     * @param array  $fence_ids         围栏id列表
+     * @param string $monitored_person  监控对象
      * @param string $coord_type_output 输出坐标类型
      * @return array
      */
@@ -342,8 +342,8 @@ class Fence extends YingYan
 
     /**
      * 增加围栏需监控的entity
-     * @param int $service_id 该围栏实体所属的轨迹服务ID
-     * @param int $fence_id 围栏的唯一标识
+     * @param int    $service_id       该围栏实体所属的轨迹服务ID
+     * @param int    $fence_id         围栏的唯一标识
      * @param string $monitored_person 监控对象，支持多个，使用英文逗号分隔
      * @return bool
      */
@@ -364,8 +364,8 @@ class Fence extends YingYan
 
     /**
      * 删除围栏可去除监控的entity
-     * @param int $service_id 该围栏实体所属的轨迹服务ID
-     * @param int $fence_id 围栏的唯一标识
+     * @param int    $service_id       该围栏实体所属的轨迹服务ID
+     * @param int    $fence_id         围栏的唯一标识
      * @param string $monitored_person 监控对象，支持多个，使用英文逗号分隔
      * @return bool
      */
@@ -387,9 +387,9 @@ class Fence extends YingYan
     /**
      * 查询围栏监控的所有entity
      * @param int $service_id 该围栏实体所属的轨迹服务ID
-     * @param int $fence_id 围栏的唯一标识
+     * @param int $fence_id   围栏的唯一标识
      * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param int $page_size  分页大小
      * @return array
      */
     public function listmonitoredperson($service_id, $fence_id, $page_index = 1, $page_size = 100)
@@ -405,9 +405,9 @@ class Fence extends YingYan
 
     /**
      * 查询监控对象相对围栏的状态
-     * @param int $service_id 该围栏实体所属的轨迹服务ID
+     * @param int    $service_id       该围栏实体所属的轨迹服务ID
      * @param string $monitored_person 监控对象的 entity_name
-     * @param array $fence_ids 围栏实体的id列表,若不填，则查询监控对象上的所有围栏状态
+     * @param array  $fence_ids        围栏实体的id列表,若不填，则查询监控对象上的所有围栏状态
      * @return array
      */
     public function querystatus($service_id, $monitored_person, array $fence_ids = [])
@@ -424,11 +424,11 @@ class Fence extends YingYan
 
     /**
      * 查询某监控对象的围栏报警信息
-     * @param int $service_id 该围栏实体所属的轨迹服务ID
-     * @param string $monitored_person 监控对象的 entity_name
-     * @param array $fence_ids 围栏实体的id列表,若不填，则查询监控对象上的所有围栏状态
-     * @param int $start_time 开始时间戳
-     * @param int $end_time 结束时间戳
+     * @param int    $service_id        该围栏实体所属的轨迹服务ID
+     * @param string $monitored_person  监控对象的 entity_name
+     * @param array  $fence_ids         围栏实体的id列表,若不填，则查询监控对象上的所有围栏状态
+     * @param int    $start_time        开始时间戳
+     * @param int    $end_time          结束时间戳
      * @param string $coord_type_output 返回坐标类型
      * @return array
      */
@@ -455,12 +455,12 @@ class Fence extends YingYan
 
     /**
      * 批量查询所有围栏报警信息.批量查询某 service 7天内任意1小时，所有围栏的报警信息。
-     * @param int $service_id 该围栏实体所属的轨迹服务ID
-     * @param int $start_time 开始时间戳
-     * @param int $end_time 结束时间戳
+     * @param int    $service_id        该围栏实体所属的轨迹服务ID
+     * @param int    $start_time        开始时间戳
+     * @param int    $end_time          结束时间戳
      * @param string $coord_type_output 返回坐标类型
-     * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param int    $page_index        分页索引
+     * @param int    $page_size         分页大小
      * @return array
      */
     public function batchhistoryalarm($service_id, $start_time, $end_time, $coord_type_output = 'bd09ll', $page_index = 1, $page_size = 500)

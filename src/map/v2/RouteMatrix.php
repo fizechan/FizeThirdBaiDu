@@ -15,7 +15,7 @@ class RouteMatrix extends Map
      * @param string $destinations 结束坐标格式为：lat<纬度>,lng<经度>|lat<纬度>,lng<经度>
      * @param string $coord_type 坐标类型
      * @param int $tactics 10： 不走高速；11：常规路线，即多数人常走的一条路线，不受路况影响；12： 距离较短（考虑路况）：即距离相对较短的一条路线，但并不一定是一条优质路线。计算耗时时，考虑路况对耗时的影响；13： 距离较短
-     * @return array 错误则返回false
+     * @return array
      */
     public function driving($origins, $destinations, $coord_type = 'bd09ll', $tactics = 13)
     {
@@ -34,7 +34,7 @@ class RouteMatrix extends Map
      * @param string $origins 开始坐标格式为：lat<纬度>,lng<经度>|lat<纬度>,lng<经度>
      * @param string $destinations 结束坐标格式为：lat<纬度>,lng<经度>|lat<纬度>,lng<经度>
      * @param string $coord_type 坐标类型
-     * @return array 错误则返回false
+     * @return array
      */
     public function riding($origins, $destinations, $coord_type = 'bd09ll')
     {
@@ -52,7 +52,7 @@ class RouteMatrix extends Map
      * @param string $origins 开始坐标格式为：lat<纬度>,lng<经度>|lat<纬度>,lng<经度>
      * @param string $destinations 结束坐标格式为：lat<纬度>,lng<经度>|lat<纬度>,lng<经度>
      * @param string $coord_type 坐标类型
-     * @return array 错误则返回false
+     * @return array
      */
     public function walking($origins, $destinations, $coord_type = 'bd09ll')
     {

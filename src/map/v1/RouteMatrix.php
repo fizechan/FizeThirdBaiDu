@@ -15,7 +15,7 @@ class RouteMatrix extends Map
      * @param string $destinations 结束坐标格式为：lat<纬度>,lng<经度>|lat<纬度>,lng<经度>
      * @param string $coord_type 坐标类型
      * @param int $timestamp 时间戳
-     * @return array 错误则返回false
+     * @return array
      */
     public function driving($origins, $destinations, $coord_type = 'bd09ll', $timestamp = null)
     {
@@ -39,7 +39,7 @@ class RouteMatrix extends Map
      * @param string $destinations 结束坐标格式为：lat<纬度>,lng<经度>|lat<纬度>,lng<经度>
      * @param string $coord_type 坐标类型
      * @param int $timestamp 时间戳
-     * @return array 错误则返回false
+     * @return array
      */
     public function walking($origins, $destinations, $coord_type = 'bd09ll', $timestamp = null)
     {

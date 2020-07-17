@@ -15,7 +15,7 @@ class TimeZone extends Map
      * @param string $location 需查询时区的位置坐标（纬度、经度）,当前仅支持全球陆地坐标查询，海域坐标暂不支持
      * @param string $coord_type 坐标的类型
      * @param int $timestamp 时间戳
-     * @return array 错误则返回false
+     * @return array
      */
     public function timezone($location, $coord_type = 'bd09ll', $timestamp = null)
     {

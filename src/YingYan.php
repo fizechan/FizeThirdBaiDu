@@ -1,6 +1,5 @@
 <?php
 
-
 namespace fize\third\baidu;
 
 use fize\third\baidu\Map as Common;

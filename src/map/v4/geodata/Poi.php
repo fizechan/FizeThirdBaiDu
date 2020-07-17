@@ -24,7 +24,7 @@ class Poi extends Map
      * @param string $tags 标签
      * @param array $column 自定义列数组
      * @param string $polygons 多边形边界点坐标数据,格式为：经度,纬度;经度,纬度;经度,纬度
-     * @return int 成功时返回自增id，错误返回false
+     * @return int 成功时返回自增id
      */
     public function create($geotable_id, $latitude, $longitude, $coord_type, $title = null, $address = null, $tags = null, array $column = [], $polygons = null)
     {
@@ -56,7 +56,7 @@ class Poi extends Map
      * @param string $start_date 创建日期,格式：2017-06-01
      * @param string $end_date 修改日期,格式：2017-06-01
      * @param array $column 自定义数组查询
-     * @return array 返回结果，含size,total,pois，错误返回false
+     * @return array 返回结果，含size,total,pois
      */
     public function list($geotable_id, $coord_type, $page_index = 0, $page_size = 10, $title = null, $tags = null, $bounds = null, $start_date = null, $end_date = null, array $column = [])
     {
@@ -91,7 +91,7 @@ class Poi extends Map
      * 查询指定id数据
      * @param int $geotable_id poi主键
      * @param int $id 表主键
-     * @return array 成功时返回POI信息数组，错误返回false
+     * @return array 返回POI信息数组
      */
     public function detail($geotable_id, $id)
     {
@@ -114,7 +114,7 @@ class Poi extends Map
      * @param float $longitude 经度，必填项
      * @param int $coord_type 用户上传的坐标的类型，必填项 1．GPS经纬度坐标，2．测局加密经纬度坐标，3．度加密经纬度坐标，4．度加密墨卡托坐标
      * @param array $column 自定义列,自定义唯一索引key也在此指定查询，其他字段则进行修改
-     * @return boolean
+     * @return bool
      */
     public function update($geotable_id, $id, $title = null, $address = null, $tags = null, $latitude = null, $longitude = null, $coord_type = null, array $column = null)
     {
@@ -159,7 +159,7 @@ class Poi extends Map
      * @param string $title 左右匹配标题，为null时不指定
      * @param string $tags 匹配标签，为null时不指定
      * @param array $column 自定义的查询键值对，为null时不指定
-     * @return mixed 单个时返回数据id(int)，批量时返回任务id(string)，错误返回false
+     * @return mixed 单个时返回数据id(int)，批量时返回任务id(string)
      */
     public function delete($geotable_id, $id = null, $title = null, $tags = null, array $column = null)
     {
@@ -202,7 +202,7 @@ class Poi extends Map
      * 批量上传数据文件
      * @param int $geotable_id 指定表ID
      * @param string $poi_list_file 要上传的CSV文件路径
-     * @return string 返回操作任务id(string)，错误时返回false
+     * @return string 返回操作任务id(string)
      */
     public function upload($geotable_id, $poi_list_file)
     {

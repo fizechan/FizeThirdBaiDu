@@ -25,16 +25,6 @@ class Map
     protected $sk = null;
 
     /**
-     * @var int 最后错误码
-     */
-    public $errCode = 0;
-
-    /**
-     * @var string 最后错误描述
-     */
-    public $errMsg = "";
-
-    /**
      * 主URL域名
      */
     protected static $DOMAIN_API = "http://api.map.baidu.com";
@@ -52,10 +42,10 @@ class Map
 
     /**
      * 获取SN
-     * @param string $sk SK值
-     * @param string $url 请求URL
-     * @param array $querystring_arrays 请求参数
-     * @param string $method 请求方式;GET/POST
+     * @param string $sk                 SK值
+     * @param string $url                请求URL
+     * @param array  $querystring_arrays 请求参数
+     * @param string $method             请求方式;GET/POST
      * @return string
      */
     protected function caculateAKSN($sk, $url, array $querystring_arrays, $method = 'GET')
@@ -79,12 +69,12 @@ class Map
 
     /**
      * 内部使用的统一GET方法
-     * @param string $uri 资源标识
-     * @param array $paras GET参数
-     * @param mixed $out 输出的参数，如果是字符串表示输出该字符串键名的对应内容，是数组表示输出以这些键名组成的对应内容
+     * @param string  $uri     资源标识
+     * @param array   $paras   GET参数
+     * @param mixed   $out     输出的参数，如果是字符串表示输出该字符串键名的对应内容，是数组表示输出以这些键名组成的对应内容
      * @param boolean $ak_must AK值是否是必须传递的，默认true，如果设置为true时，会在参数中检查ak值是否指定，并在未指定时加入系统ak
-     * @param string $sn_key 要加入的sn键名，默认为sn，正常情况下不需要修改该值
-     * @return mixed 正确返回对应结果，错误返回false
+     * @param string  $sn_key  要加入的sn键名，默认为sn，正常情况下不需要修改该值
+     * @return mixed
      */
     protected function httpGet($uri, array $paras, $out, $ak_must = true, $sn_key = 'sn')
     {
@@ -103,25 +93,18 @@ class Map
 
         $json = Http::get($url);
 
-        if ($json === false) {
-            throw new RuntimeException(Http::getLastErrMsg(), Http::getLastErrCode());
-        }
-
         $array = Json::decode($json);
 
         if ($array === false) {
             throw new RuntimeException(Json::lastErrorMsg(), Json::lastError());
         }
 
-        $this->errCode = isset($array['status']) ? $array['status'] : 0;
-        $this->errMsg = isset($array['message']) ? $array['message'] : '';
-
         if (is_string($out)) { //字符串作为单独返回的字段
-            return isset($array[$out]) ? $array[$out] : false;
+            return isset($array[$out]) ? $array[$out] : null;
         } else { //数组作为返回多个带键名
             $result = [];
             foreach ($out as $key) {
-                $result[$key] = isset($array[$key]) ? $array[$key] : false;
+                $result[$key] = isset($array[$key]) ? $array[$key] : null;
             }
             return $result;
         }
@@ -129,12 +112,12 @@ class Map
 
     /**
      * 内部使用的统一POST方法
-     * @param string $uri 资源标识
-     * @param array $paras GOST参数
-     * @param mixed $out 输出的参数，如果是字符串表示输出该字符串键名的对应内容，是数组表示输出已这些键名组成的对应内容
+     * @param string  $uri     资源标识
+     * @param array   $paras   GOST参数
+     * @param mixed   $out     输出的参数，如果是字符串表示输出该字符串键名的对应内容，是数组表示输出已这些键名组成的对应内容
      * @param boolean $ak_must AK值是否是必须传递的，默认true，如果设置为true时，会在参数中检查ak值是否指定，并在未指定时加入系统ak
-     * @param string $sn_key 要加入的sn键名，默认为sn，正常情况下不需要修改该值
-     * @return mixed 正确返回对应结果，错误返回false
+     * @param string  $sn_key  要加入的sn键名，默认为sn，正常情况下不需要修改该值
+     * @return mixed
      */
     protected function httpPost($uri, array $paras, $out, $ak_must = true, $sn_key = 'sn')
     {
@@ -147,13 +130,8 @@ class Map
         }
 
         $url = self::$DOMAIN_API . $uri;
-        //die($url);
 
         $json = Http::post($url, $paras);
-
-        if ($json === false) {
-            throw new RuntimeException(Http::getLastErrMsg(), Http::getLastErrCode());
-        }
 
         $array = Json::decode($json);
 
@@ -161,15 +139,12 @@ class Map
             throw new RuntimeException(Json::lastErrorMsg(), Json::lastError());
         }
 
-        $this->errCode = isset($array['status']) ? $array['status'] : 0;
-        $this->errMsg = isset($array['message']) ? $array['message'] : '';
-
         if (is_string($out)) { //字符串作为单独返回的字段
-            return isset($array[$out]) ? $array[$out] : false;
+            return isset($array[$out]) ? $array[$out] : null;
         } else { //数组作为返回多个带键名
             $result = [];
             foreach ($out as $key) {
-                $result[$key] = isset($array[$key]) ? $array[$key] : false;
+                $result[$key] = isset($array[$key]) ? $array[$key] : null;
             }
             return $result;
         }

@@ -23,7 +23,7 @@ class Column extends Map
      * @param int $type 枚举值 1： Int64, 2:double, 3,string，4，在线图片url
      * @param int $is_search_field 是否检索引擎的文本检索字段 1,代表支持，0为不支持。只有string可以设置
      * @param int $is_index_field 是否存储引擎的索引字段 1,代表支持，0为不支持。
-     * @return int 新增的数据的id，错误时返回false
+     * @return int 新增的数据的id
      */
     public function create($geotable_id, $name, $key, $type, $is_search_field, $is_index_field)
     {
@@ -43,7 +43,7 @@ class Column extends Map
      * @param int $geotable_id
      * @param string $name 查询表名左匹配字符串
      * @param string $key
-     * @return array 成功返回表列表，错误时返回false
+     * @return array 返回表列表
      */
     public function list($geotable_id, $name = '', $key = '')
     {
@@ -59,7 +59,7 @@ class Column extends Map
      * 查询指定id列属性
      * @param int $geotable_id 指定表的id
      * @param int $id 指定列的id
-     * @return array 成功时返回列信息数组，错误返回false
+     * @return array 返回列信息数组
      */
     public function detail($geotable_id, $id)
     {
@@ -77,7 +77,7 @@ class Column extends Map
      * @param string $name 属性中文名称
      * @param int $is_search_field 是否检索引擎的文本检索字段
      * @param int $is_index_field 是否存储引擎的索引字段
-     * @return boolean 修改成功返回true，否则返回false
+     * @return bool 修改成功返回true，否则返回false
      */
     public function update($geotable_id, $id, $name = null, $is_search_field = null, $is_index_field = null)
     {
@@ -106,7 +106,7 @@ class Column extends Map
      * 删除指定条件列
      * @param int $geotable_id 指定要删除的geotable主键
      * @param int $id 列ID
-     * @return boolean 删除成功返回true，否则返回false
+     * @return bool 删除成功返回true，否则返回false
      */
     public function delete($geotable_id, $id)
     {

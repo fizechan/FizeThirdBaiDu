@@ -12,18 +12,18 @@ class Track extends YingYan
 {
     /**
      * 上传单个轨迹点,为一个entity上传一个轨迹点
-     * @param int $service_id servicede ID
-     * @param string $entity_name entity唯一标识
-     * @param float $latitude 纬度
-     * @param float $longitude 经度
-     * @param int $loc_time 定位时设备的时间戳
+     * @param int    $service_id       servicede ID
+     * @param string $entity_name      entity唯一标识
+     * @param float  $latitude         纬度
+     * @param float  $longitude        经度
+     * @param int    $loc_time         定位时设备的时间戳
      * @param string $coord_type_input 坐标类型
-     * @param float $speed 速度，单位：km/h
-     * @param int $direction 方向，范围为[0,359]，0度为正北方向，顺时针
-     * @param float $height 高度
-     * @param float $radius 定位精度，GPS或定位SDK返回的值
-     * @param string $object_name 对象数据名称，通过鹰眼 SDK 上传的图像文件名称
-     * @param array $column track的自定义字段
+     * @param float  $speed            速度，单位：km/h
+     * @param int    $direction        方向，范围为[0,359]，0度为正北方向，顺时针
+     * @param float  $height           高度
+     * @param float  $radius           定位精度，GPS或定位SDK返回的值
+     * @param string $object_name      对象数据名称，通过鹰眼 SDK 上传的图像文件名称
+     * @param array  $column           track的自定义字段
      * @return bool
      */
     public function addpoint($service_id, $entity_name, $latitude, $longitude, $loc_time, $coord_type_input = 'bd09ll', $speed = null, $direction = null, $height = null, $radius = null, $object_name = null, array $column = [])
@@ -64,7 +64,7 @@ class Track extends YingYan
 
     /**
      * 批量添加轨迹点
-     * @param int $service_id service唯一标识
+     * @param int   $service_id service唯一标识
      * @param array $point_list 轨迹点列表
      * @return array
      */
@@ -79,9 +79,9 @@ class Track extends YingYan
 
     /**
      * 实时纠偏
-     * @param int $service_id service唯一标识
-     * @param string $entity_name entity唯一标识
-     * @param string $process_option 纠偏选项
+     * @param int    $service_id        service唯一标识
+     * @param string $entity_name       entity唯一标识
+     * @param string $process_option    纠偏选项
      * @param string $coord_type_output 返回的坐标类型,默认值：bd09ll
      * @return array
      */
@@ -102,12 +102,12 @@ class Track extends YingYan
 
     /**
      * 查询轨迹里程
-     * @param int $service_id service唯一标识
-     * @param string $entity_name entity唯一标识
-     * @param int $start_time 开始时间戳
-     * @param int $end_time 结束时间戳
-     * @param int $is_processed 是否返回纠偏后里程
-     * @param string $process_option 纠偏选项
+     * @param int    $service_id      service唯一标识
+     * @param string $entity_name     entity唯一标识
+     * @param int    $start_time      开始时间戳
+     * @param int    $end_time        结束时间戳
+     * @param int    $is_processed    是否返回纠偏后里程
+     * @param string $process_option  纠偏选项
      * @param string $supplement_mode 里程补偿方式
      * @return float
      */
@@ -129,17 +129,17 @@ class Track extends YingYan
 
     /**
      * 轨迹查询与纠偏
-     * @param int $service_id service唯一标识
-     * @param string $entity_name entity唯一标识
-     * @param int $start_time 开始时间戳
-     * @param int $end_time 结束时间戳
-     * @param int $is_processed 是否返回纠偏后里程
-     * @param string $process_option 纠偏选项
-     * @param string $supplement_mode 里程补偿方式
+     * @param int    $service_id        service唯一标识
+     * @param string $entity_name       entity唯一标识
+     * @param int    $start_time        开始时间戳
+     * @param int    $end_time          结束时间戳
+     * @param int    $is_processed      是否返回纠偏后里程
+     * @param string $process_option    纠偏选项
+     * @param string $supplement_mode   里程补偿方式
      * @param string $coord_type_output 返回的坐标类型
-     * @param string $sort_type 返回轨迹点的排序规则
-     * @param int $page_index 分页索引
-     * @param int $page_size 分页大小
+     * @param string $sort_type         返回轨迹点的排序规则
+     * @param int    $page_index        分页索引
+     * @param int    $page_size         分页大小
      * @return array
      */
     public function gettrack($service_id, $entity_name, $start_time, $end_time, $is_processed = 0, $process_option = null, $supplement_mode = 'no_supplement', $coord_type_output = 'bd09ll', $sort_type = 'asc', $page_index = 1, $page_size = 100)

@@ -15,9 +15,9 @@ class Geotable extends Map
 
     /**
      * 创建表
-     * @param string $name Geotable名称
-     * @param int $is_published 是否发布到检索 0:否;1是
-     * @return int 新增的数据的id，错误时返回false
+     * @param string $name         Geotable名称
+     * @param int    $is_published 是否发布到检索 0:否;1是
+     * @return int 新增的数据的id
      */
     public function create($name, $is_published = 1)
     {
@@ -31,7 +31,7 @@ class Geotable extends Map
     /**
      * 查询表
      * @param string $name 查询表名左匹配字符串
-     * @return array 成功返回表列表，错误时返回false
+     * @return array 返回表列表
      */
     public function list($name = '')
     {
@@ -42,7 +42,7 @@ class Geotable extends Map
     /**
      * 查询指定id表
      * @param int $id 指定geotable的id
-     * @return array 成功时返回表信息数组，错误返回false
+     * @return array 返回表信息数组
      */
     public function detail($id)
     {
@@ -52,10 +52,10 @@ class Geotable extends Map
 
     /**
      * 修改表
-     * @param int $id 指定要修改的geotable主键
-     * @param int $is_published 修改是否发布到检索，会引起批量操作，只支持0->1，默认null表示不进行is_published修改
-     * @param string $name 指定修改的表名，默认null表示不进行name修改
-     * @return array 成功时返回表信息数组，错误返回false
+     * @param int    $id           指定要修改的geotable主键
+     * @param int    $is_published 修改是否发布到检索，会引起批量操作，只支持0->1，默认null表示不进行is_published修改
+     * @param string $name         指定修改的表名，默认null表示不进行name修改
+     * @return array 返回表信息数组
      */
     public function update($id, $is_published = null, $name = null)
     {
@@ -72,7 +72,7 @@ class Geotable extends Map
     /**
      * 删除表,当geotable里面没有有效数据时，才能删除geotable
      * @param int $id 指定要删除的geotable主键
-     * @return boolean 删除成功返回true，否则返回false
+     * @return bool 删除成功返回true，否则返回false
      */
     public function delete($id)
     {

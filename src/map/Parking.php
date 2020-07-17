@@ -10,9 +10,9 @@ use fize\third\baidu\Map;
 class Parking extends Map
 {
     /**
-     * @param string $location 需查询周边推荐上车点的位置坐标,格式：经度,纬度
+     * @param string $location  需查询周边推荐上车点的位置坐标,格式：经度,纬度
      * @param string $coordtype 请求参数中坐标的类型
-     * @return array 错误则返回false
+     * @return array
      */
     public function search($location, $coordtype = 'bd09ll')
     {

@@ -11,9 +11,9 @@ class Export extends YingYan
 {
     /**
      * 创建任务
-     * @param int $service_id service的ID
-     * @param int $start_time 开始时间戳
-     * @param int $end_time 结束时间戳
+     * @param int    $service_id        service的ID
+     * @param int    $start_time        开始时间戳
+     * @param int    $end_time          结束时间戳
      * @param string $coord_type_output 返回的坐标类型，默认值：bd09ll
      * @return mixed
      */
@@ -33,7 +33,7 @@ class Export extends YingYan
     /**
      * 删除任务
      * @param int $service_id service的ID
-     * @param int $job_id 任务id
+     * @param int $job_id     任务id
      * @return bool
      */
     public function deletejob($service_id, $job_id)

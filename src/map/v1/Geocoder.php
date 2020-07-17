@@ -21,7 +21,7 @@ class Geocoder extends Map
      * @param int $geotable_id 填写则激活个性化GC服务
      * @param string $output 输出格式为json或者xml，在后端请勿使用该参数
      * @param string $callback 将json格式的返回值通过callback函数返回以实现jsonp功能，在后端请勿使用该参数
-     * @return array 错误则返回false
+     * @return array
      */
     public function cloudgc($address, $city = null, $geotable_id = null, $output = 'json', $callback = null)
     {
@@ -49,7 +49,7 @@ class Geocoder extends Map
      * @param string $extensions 是否返回扩展信息：默认不返回，extensions=pois时返回pois和custom_pois
      * @param string $coord_type bd09ll（百度经纬度坐标）、gcj02ll（国测局经纬度坐标）、wgs84ll（wgs84经纬度坐标）
      * @param mixed $timestamp 鉴权时间戳，false表示不传递，null表示传递当前时间戳
-     * @return array 错误时返回false
+     * @return array
      */
     public function cloudrgc($location, $geotable_id, $extensions = null, $coord_type = null, $timestamp = false)
     {

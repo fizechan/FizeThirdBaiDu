@@ -13,15 +13,6 @@ class Place extends Map
 {
 
     /**
-     * 区域检索POI服务与POI详情服务。
-     * @param string $query 检索关键字
-     * @param array $params 其他参数
-     * @param int $scope 检索结果详细程度。取值为1 或空，则返回基本信息；取值为2，返回检索POI详细信息
-     * @param string $output 输出格式为json或者xml，默认json
-     * @return array
-     */
-
-    /**
      * 行政区划区域检索
      * @param string $query 检索关键字
      * @param string $region 检索行政区划区域

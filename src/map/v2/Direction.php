@@ -23,7 +23,7 @@ class Direction extends Map
      * @param string $ret_coordtype 返回值的坐标类型
      * @param int $page_size 返回每页几条路线
      * @param int $page_index 返回第几页
-     * @return array 错误则返回false
+     * @return array
      */
     public function transit($origin, $destination, $coord_type = 'bd09ll', $tactics_incity = 0, $tactics_intercity = 0, $trans_type_intercity = 0, $ret_coordtype = 'bd09ll', $page_size = 10, $page_index = 1)
     {
@@ -49,7 +49,7 @@ class Direction extends Map
      * @param string $coord_type 输入坐标类型
      * @param string $ret_coordtype 输出坐标类型
      * @param int $riding_type 骑行类型,默认0：0-普通  1-电动车
-     * @return array 错误则返回false
+     * @return array
      */
     public function riding($origin, $destination, $coord_type = 'bd09ll', $ret_coordtype = 'bd09ll', $riding_type = 0)
     {
@@ -76,7 +76,7 @@ class Direction extends Map
      * @param int $alternatives 是否返回备选路线
      * @param string $plate_number 车牌号，如 京A00022，用于规避车牌号限行路段。
      * @param int $timestamp 时间戳
-     * @return array 错误则返回false
+     * @return array
      */
     public function driving($origin, $destination, $origin_uid = null, $destination_uid = null, $coord_type = 'bd09ll', $ret_coordtype = 'bd09ll', $tactics = 0, $alternatives = 0, $plate_number = null, $timestamp = null)
     {

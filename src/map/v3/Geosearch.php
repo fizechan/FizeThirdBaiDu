@@ -27,7 +27,7 @@ class Geosearch extends Map
      * @param int $radius 检索半径，默认1000
      * @param string $sortby 排序字段，默认为按weight排序
      * @param string $filter 过滤条件
-     * @return array 错误时返回false
+     * @return array
      */
     public function nearby($geotable_id, $location, $q = null, $page_index = null, $page_size = null, $callback = null, $coord_type = null, $tags = null, $radius = null, $sortby = null, $filter = null)
     {
@@ -77,7 +77,7 @@ class Geosearch extends Map
      * @param string $tags 标签，空格分隔的多字符串
      * @param string $sortby 排序字段，默认为按weight排序
      * @param string $filter 过滤条件
-     * @return array 错误时返回false
+     * @return array
      */
     public function bound($geotable_id, $bounds, $q, $coord_type = null, $page_index = null, $page_size = null, $callback = null, $tags = null, $sortby = null, $filter = null)
     {
@@ -122,7 +122,7 @@ class Geosearch extends Map
      * @param string $tags 标签 空格分隔的多字符串
      * @param string $sortby 排序字段
      * @param string $filter 过滤条件
-     * @return array 错误时返回false
+     * @return array
      */
     public function local($geotable_id, $q, $coord_type = null, $region = null, $page_index = null, $page_size = null, $callback = null, $tags = null, $sortby = null, $filter = null)
     {
@@ -162,7 +162,7 @@ class Geosearch extends Map
      * @param int $geotable_id 表ID
      * @param int $uid poi的ID
      * @param int $coord_type 坐标系，3代表百度经纬度坐标系统 4代表百度墨卡托系统
-     * @return array 错误时返回false
+     * @return array
      */
     public function detail($geotable_id, $uid, $coord_type = null)
     {

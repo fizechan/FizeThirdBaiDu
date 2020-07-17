@@ -19,7 +19,7 @@ class Job extends Map
      * @param string $id 导入接口返回的job_id
      * @param int $page_size 分页数目，默认为10，上限为100
      * @param int $page_index 分页索引，默认为0
-     * @return array 错误时返回false
+     * @return array
      */
     public function list($geotable_id, $id = null, $page_size = 10, $page_index = 0)
     {

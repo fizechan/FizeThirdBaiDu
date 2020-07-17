@@ -12,13 +12,13 @@ class Analysis extends YingYan
 
     /**
      * 停留点查询
-     * @param int $service_id service的ID
-     * @param string $entity_name entity名称
-     * @param int $start_time 开始时间戳
-     * @param int $end_time 结束时间戳
-     * @param int $stay_time 停留时间，单位秒
-     * @param int $stay_radius 停留半径，单位米
-     * @param string $process_option 纠偏选项，用于控制返回坐标的纠偏处理方式
+     * @param int    $service_id        service的ID
+     * @param string $entity_name       entity名称
+     * @param int    $start_time        开始时间戳
+     * @param int    $end_time          结束时间戳
+     * @param int    $stay_time         停留时间，单位秒
+     * @param int    $stay_radius       停留半径，单位米
+     * @param string $process_option    纠偏选项，用于控制返回坐标的纠偏处理方式
      * @param string $coord_type_output 返回的坐标类型
      * @return array
      */
@@ -41,16 +41,16 @@ class Analysis extends YingYan
 
     /**
      * 驾驶行为分析
-     * @param int $service_id service的ID
-     * @param string $entity_name entity名称
-     * @param int $start_time 开始时间戳
-     * @param int $end_time 结束时间戳
-     * @param float $speeding_threshold 固定限速值
-     * @param float $harsh_acceleration_threshold 急加速的加速度阈值
-     * @param float $harsh_breaking_threshold 急减速的加速度阈值
-     * @param float $harsh_steering_threshold 急转弯的向心加速度阈值
-     * @param string $process_option 纠偏选项，用于控制返回坐标的纠偏处理方式，不填则按默认纠偏方式处理
-     * @param string $coord_type_output 返回的坐标类型
+     * @param int    $service_id                   service的ID
+     * @param string $entity_name                  entity名称
+     * @param int    $start_time                   开始时间戳
+     * @param int    $end_time                     结束时间戳
+     * @param float  $speeding_threshold           固定限速值
+     * @param float  $harsh_acceleration_threshold 急加速的加速度阈值
+     * @param float  $harsh_breaking_threshold     急减速的加速度阈值
+     * @param float  $harsh_steering_threshold     急转弯的向心加速度阈值
+     * @param string $process_option               纠偏选项，用于控制返回坐标的纠偏处理方式，不填则按默认纠偏方式处理
+     * @param string $coord_type_output            返回的坐标类型
      * @return array
      */
     public function drivingbehavior($service_id, $entity_name, $start_time, $end_time, $speeding_threshold = null, $harsh_acceleration_threshold = null, $harsh_breaking_threshold = null, $harsh_steering_threshold = null, $process_option = null, $coord_type_output = null)
