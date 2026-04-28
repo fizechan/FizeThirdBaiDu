@@ -1,8 +1,8 @@
 <?php
 
-namespace fize\third\baidu\yingyan\v3;
+namespace Fize\Third\BaiDu\YingYan\V3;
 
-use fize\third\baidu\YingYan;
+use Fize\Third\BaiDu\YingYan;
 
 /**
  * 批量导出类接口

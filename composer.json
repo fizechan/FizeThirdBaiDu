@@ -7,7 +7,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "fize\\third\\baidu\\": "src"
+      "Fize\\Third\\BaiDu\\": "src"
     }
   },
   "description": "百度各类接口实现",
@@ -16,10 +16,10 @@
   "require": {
     "php": ">=7.0",
     "ext-curl": "*",
-    "fize/crypt": "~3.2.0",
-    "fize/net": "~4.2.0"
+    "fize/codec": "*",
+    "fize/net": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "~9.2.6"
+    "phpunit/phpunit": "~9.6.34"
   }
 }

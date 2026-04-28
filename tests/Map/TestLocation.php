@@ -1,8 +1,8 @@
 <?php
 
-namespace map;
+namespace Map;
 
-use fize\third\baidu\map\Location;
+use Fize\Third\BaiDu\Map\Location;
 use PHPUnit\Framework\TestCase;
 
 class TestLocation extends TestCase

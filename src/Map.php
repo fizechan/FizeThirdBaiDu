@@ -1,11 +1,11 @@
 <?php
 
 
-namespace fize\third\baidu;
+namespace Fize\Third\BaiDu;
 
+use Fize\Codec\Json;
+use Fize\Net\Http;
 use RuntimeException;
-use fize\net\Http;
-use fize\crypt\Json;
 
 
 /**

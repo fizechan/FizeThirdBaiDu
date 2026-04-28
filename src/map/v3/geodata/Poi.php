@@ -1,9 +1,9 @@
 <?php
 
-namespace fize\third\baidu\map\v3\geodata;
+namespace Fize\Third\BaiDu\Map\V3\Geodata;
 
 use CURLFile;
-use fize\third\baidu\Map;
+use Fize\Third\BaiDu\Map;
 
 /**
  * 位置数据操作接口

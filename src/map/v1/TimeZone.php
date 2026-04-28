@@ -1,8 +1,8 @@
 <?php
 
-namespace fize\third\baidu\map\v1;
+namespace Fize\Third\BaiDu\Map\V1;
 
-use fize\third\baidu\Map;
+use Fize\Third\BaiDu\Map;
 
 /**
  * 时区服务

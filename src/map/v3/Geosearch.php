@@ -1,9 +1,8 @@
 <?php
 
-namespace fize\third\baidu\map\v3;
+namespace Fize\Third\BaiDu\Map\V3;
 
-
-use fize\third\baidu\Map;
+use Fize\Third\BaiDu\Map;
 
 
 /**

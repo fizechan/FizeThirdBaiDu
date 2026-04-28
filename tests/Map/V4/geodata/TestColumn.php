@@ -1,8 +1,8 @@
 <?php
 
-namespace map\v4\geodata;
+namespace Map\V4\Geodata;
 
-use fize\third\baidu\map\v4\geodata\Column;
+use Fize\Third\BaiDu\Map\V4\Geodata\Column;
 use PHPUnit\Framework\TestCase;
 
 class TestColumn extends TestCase

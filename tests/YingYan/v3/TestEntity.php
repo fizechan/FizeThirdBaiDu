@@ -1,8 +1,8 @@
 <?php
 
-namespace yingyan\v3;
+namespace YingYan\V3;
 
-use fize\third\baidu\yingyan\v3\Entity;
+use Fize\Third\BaiDu\YingYan\V3\Entity;
 use PHPUnit\Framework\TestCase;
 
 class TestEntity extends TestCase

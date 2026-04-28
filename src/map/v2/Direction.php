@@ -1,9 +1,9 @@
 <?php
 
 
-namespace fize\third\baidu\map\v2;
+namespace Fize\Third\BaiDu\Map\V2;
 
-use fize\third\baidu\Map;
+use Fize\Third\BaiDu\Map;
 
 /**
  * 路线规划

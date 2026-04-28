@@ -1,9 +1,9 @@
 <?php
 
-namespace fize\third\baidu\map;
+namespace Fize\Third\BaiDu\Map;
 
 
-use fize\third\baidu\Map;
+use Fize\Third\BaiDu\Map;
 
 /**
  * 普通IP定位

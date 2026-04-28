@@ -1,8 +1,8 @@
 <?php
 
-namespace fize\third\baidu\map;
+namespace Fize\Third\BaiDu\Map;
 
-use fize\third\baidu\Map;
+use Fize\Third\BaiDu\Map;
 
 /**
  * 推荐上车点服务

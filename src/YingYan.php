@@ -1,13 +1,11 @@
 <?php
 
-namespace fize\third\baidu;
-
-use fize\third\baidu\Map as Common;
+namespace Fize\Third\BaiDu;
 
 /**
  * 百度鹰眼接口请求基类
  */
-class YingYan extends Common
+class YingYan extends Map
 {
     /**
      * 主URL域名

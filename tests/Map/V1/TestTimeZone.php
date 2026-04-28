@@ -1,8 +1,8 @@
 <?php
 
-namespace map\v1;
+namespace Map\V1;
 
-use fize\third\baidu\map\v1\TimeZone;
+use Fize\Third\BaiDu\Map\V1\TimeZone;
 use PHPUnit\Framework\TestCase;
 
 class TestTimeZone extends TestCase

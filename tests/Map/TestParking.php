@@ -1,8 +1,8 @@
 <?php
 
-namespace map;
+namespace Map;
 
-use fize\third\baidu\map\Parking;
+use Fize\Third\BaiDu\Map\Parking;
 use PHPUnit\Framework\TestCase;
 
 class TestParking extends TestCase

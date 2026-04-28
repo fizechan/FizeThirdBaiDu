@@ -1,8 +1,8 @@
 <?php
 
-namespace map\v2;
+namespace Map\V2;
 
-use fize\third\baidu\map\v2\Geocoder;
+use Fize\Third\BaiDu\Map\V2\Geocoder;
 use PHPUnit\Framework\TestCase;
 
 class TestGeocoder extends TestCase

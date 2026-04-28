@@ -1,9 +1,9 @@
 <?php
 
-namespace fize\third\baidu\yingyan\v3;
+namespace Fize\Third\BaiDu\YingYan\V3;
 
-use fize\crypt\Json;
-use fize\third\baidu\YingYan;
+use Fize\Codec\Json;
+use Fize\Third\BaiDu\YingYan;
 
 /**
  * 轨迹管理

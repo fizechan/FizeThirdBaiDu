@@ -1,8 +1,8 @@
 <?php
 
-namespace map\v3;
+namespace Map\V3;
 
-use fize\third\baidu\map\v3\Geosearch;
+use Fize\Third\BaiDu\Map\V3\Geosearch;
 use PHPUnit\Framework\TestCase;
 
 class TestGeosearch extends TestCase

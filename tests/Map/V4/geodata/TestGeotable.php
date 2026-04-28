@@ -1,8 +1,8 @@
 <?php
 
-namespace map\v4\geodata;
+namespace Map\V4\Geodata;
 
-use fize\third\baidu\map\v4\geodata\Geotable;
+use Fize\Third\BaiDu\Map\V4\Geodata\Geotable;
 use PHPUnit\Framework\TestCase;
 
 class TestGeotable extends TestCase
